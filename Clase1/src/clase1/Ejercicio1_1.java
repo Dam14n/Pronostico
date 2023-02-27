@@ -27,6 +27,6 @@ public class Ejercicio1_1 {
         String nombre = sc.nextLine();
         
         // Muestra el Hola + el nombre ingresado
-        System.out.print("Hola " + nombre);        
+        System.out.print("Hola " + nombre + "\n");        
     }
 }

@@ -5,7 +5,7 @@
 package clase1;
 /**
  *
- * @author SJorda
+ * @author  Silvio Jorda
  */
 
 import java.util.Scanner;
@@ -18,7 +18,28 @@ public class Ejercicio1_3 {
     public static void main(String[] args) {
         // TODO code application logic here
         // Declaracion de variables
-        float lad1, lad2, lad3;
-        float perimetro;
+        int temp1, temp2, temp3, suma;
+        float promedio;
+        
+        // Se utiliza la clase Scanner
+        Scanner sc = new Scanner(System.in);
+
+        // Solicita carga de datos
+        System.out.print("Ingrese la temperatura 1: ");
+        temp1 = sc.nextInt();
+        System.out.print("Ingrese la temperatura 2: ");
+        temp2 = sc.nextInt();
+        System.out.print("Ingrese la temperatura 3: ");
+        temp3 = sc.nextInt();
+        
+        // Proceso suma
+        suma = temp1 + temp2 + temp3;
+        // Muestra el resultado de la suma
+        System.out.print("La suma es: " + suma + "\n");
+
+        // Proceso promedio
+        promedio = suma / 3;
+        // Muestra el resultado del promedio
+        System.out.print("El promedio es: " + promedio + "\n");
     }
 }
