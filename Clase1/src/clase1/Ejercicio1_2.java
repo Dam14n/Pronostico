@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package clase1;
+
+import java.util.Scanner;
+
 /**
  *
  * @author SJorda
@@ -16,7 +19,14 @@ public class Ejercicio1_2 {
     public static void main(String[] args) {
         // TODO code application logic here
         // Declaracion de variables
-        float lad1, lad2, lad3;
+        float ladoA, ladoB, ladC;
         float perimetro;
+        
+        Scanner sc = new Scanner(System.in);
+        
+        // Solicita cargar un nombre
+        System.out.print("Ingrese la longitud del Lado A: ");
+        // Entrada de una cadena
+        String nombre = sc.nextFloat();
     }
 }
