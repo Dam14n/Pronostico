@@ -24,7 +24,7 @@ public class Ejercicio1_2 {
         
         Scanner sc = new Scanner(System.in);
         
-        // Solicita cargar un nombre
+        // Solicita cargar el lado A
         System.out.print("Ingrese la longitud del Lado A: ");
         // Entrada de una cadena
         String nombre = sc.nextFloat();
