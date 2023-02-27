@@ -25,3 +25,5 @@ hs_err_pid*
 .vs/AP-2023/v17/.wsuo
 .vs/VSWorkspaceState.json
 /.vs
+/guia1/nbproject/private/
+/guia1/build/
