@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package guia1;
-
 /**
  *
- * @author SJorda
+ * @author Silvio Jorda
  */
+
 class temp1 {
     
 }

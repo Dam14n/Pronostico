@@ -3,10 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package guia1;
-
 /**
  *
- * @author SJorda
+ * @author Silvio Jorda
  */
 
 import java.util.Scanner;
@@ -17,6 +16,11 @@ public class Guia1_1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /*
+          Desarrolle un programa para calcular el área de un triángulo, cargando por teclado el
+          valor de la base, pero sabiendo que su altura es igual al cuadrado de la base.
+        */
+        
         // Declaracion de variables
         float base, altura, area;
         
