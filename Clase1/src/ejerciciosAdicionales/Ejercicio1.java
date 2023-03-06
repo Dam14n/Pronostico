@@ -10,7 +10,7 @@ package ejerciciosAdicionales;
 
 import java.util.Scanner;
 
-public class Ejercicio1_1 {
+public class Ejercicio1 {
 
     /**
      * @param args the command line arguments
@@ -35,11 +35,11 @@ public class Ejercicio1_1 {
         // Proceso de calcualo del
         altura = base * base;
         // Muestra el area
-        System.out.print("La altura es: " + altura + "\n");
+        System.out.println("La altura es: " + altura);
 
         // Proceso de calcualo del
         area = (base * altura) / 2;
         // Muestra el area
-        System.out.print("La area es: " + area + "\n");
+        System.out.println("La area es: " + area);
     }
 }
