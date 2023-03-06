@@ -10,7 +10,7 @@ package ejerciciosAdicionales;
 
 import java.util.Scanner;
 
-public class Guia1_1 {
+public class Ejercicio1_1 {
 
     /**
      * @param args the command line arguments

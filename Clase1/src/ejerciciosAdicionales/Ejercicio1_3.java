@@ -10,17 +10,14 @@ package ejerciciosAdicionales;
 
 import java.util.Scanner;
 
-public class Guia1_2 {
-
+public class Ejercicio1_3 {
+        
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         /* 
-         Un vehículo parte de la ciudad de Córdoba y se dirige a Buenos Aires por autopista. La
-         distancia aproximada entre ambas ciudades es de 800 kilómetros. El vehículo se
-         desplaza con velocidad promedio de 122 km/h. Desarrolle un programa que calcule el
-         tiempo total en horas que demorará ese vehículo en llegar a Buenos Aires.
+          Leer dos números y calcular: La suma de sus cuadrados. El promedio de sus cubos.
         */
  
         // Declaracion de variables
