@@ -41,6 +41,6 @@ public class Ejercicio1_2 {
         perimetro = ladoA + ladoB + ladoC; 
         
         // Muestra el resultado
-        System.out.print("El perimetro es de: " + perimetro + "\n");
+        System.out.println("El perimetro es de: " + perimetro);
     }
 }

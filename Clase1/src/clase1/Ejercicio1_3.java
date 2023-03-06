@@ -35,11 +35,11 @@ public class Ejercicio1_3 {
         // Proceso suma
         suma = temp1 + temp2 + temp3;
         // Muestra el resultado de la suma
-        System.out.print("La suma es: " + suma + "\n");
+        System.out.println("La suma es: " + suma);
 
         // Proceso promedio
         promedio = suma / 3;
         // Muestra el resultado del promedio
-        System.out.print("El promedio es: " + promedio + "\n");
+        System.out.println("El promedio es: " + promedio);
     }
 }

@@ -18,7 +18,7 @@ public class Clase1 {
         // TODO code application logic here
         
         // Muestra Hola Mundo
-        System.out.print("Hola Mundo");        
+        System.out.println("Hola Mundo");        
     }
    
 }
