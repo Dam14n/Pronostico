@@ -2,7 +2,7 @@
 *
 *
 */
-package pronosticosdeportivos;
+package tp;
 
 /**
  *

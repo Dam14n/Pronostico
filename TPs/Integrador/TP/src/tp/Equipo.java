@@ -2,12 +2,13 @@
 *
 *
  */
-package pronosticosdeportivos;
+package tp;
 
 /**
  *
  * @author Silvio Jorda
  */
+
 public class Equipo {
     // Atributos
     private String nombre;

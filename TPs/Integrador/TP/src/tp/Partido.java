@@ -2,7 +2,7 @@
 *
 *
  */
-package pronosticosdeportivos;
+package tp;
 
 /**
  *
@@ -16,7 +16,6 @@ public class Partido {
     private Equipo equipoVisistante;
     private Integer golesEquipoLocal;
     private Integer golesEquipoVisitanate;
-    private Integer golesDelPartido;
 
     // Metodos
     public Partido(Equipo equipoLocal, Equipo equipoVisistante, 
@@ -64,14 +63,6 @@ public class Partido {
 
     public void setGolesEquipoVisitanate(Integer golesEquipoVisitanate) {
         this.golesEquipoVisitanate = golesEquipoVisitanate;
-    }
-
-    public Integer getGolesDelPartido() {
-        return golesDelPartido;
-    }
-
-    public void setGolesDelPartido(Integer golesDelPartido) {
-        this.golesDelPartido = golesDelPartido;
     }
 
     @Override

@@ -1,8 +1,8 @@
 /*
 *
 *
- */
-package pronosticosdeportivos;
+*/
+package tp;
 
 /**
  *
