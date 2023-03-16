@@ -21,8 +21,8 @@ public class Equipo {
     }
     
     public Equipo() {
-        this.nombre = "";
-        this.descripcion = "";
+        this.nombre = '';
+        this.descripcion = '';
     }
 
     public String getNombre() {
