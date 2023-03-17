@@ -41,10 +41,11 @@ public class Participante {
         this.pronosticos = pronosticos;
     }
 
+
+    // Metodos Especificos
+
     @Override
     public String toString() {
         return "Participante{" + "nombre=" + nombre + ", pronosticos=" + pronosticos + '}';
     }
-    
-    // Metodos Especificos
 }

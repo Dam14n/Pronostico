@@ -41,12 +41,26 @@ public class Equipo {
         this.descripcion = descriopcion;
     }
 
+    /*
     @Override
     public String toString() {
         //  return "Equipo{" + "nombre=" + nombre + ", descriopcion=" + descripcion + '}';
         //  return ("Equipo  -->  " + this.nombre + this.descripcion);
         return ("Equipo {" + "nombre=" + nombre + ", descriopcion=" + this.descripcion + ']');
     }
+    */
+    
+    
     
     // Metodos Especificos
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Equipo{");
+        sb.append("nombre=").append(nombre);
+        sb.append(", descripcion=").append(descripcion);
+        sb.append('}');
+        return sb.toString();
+    }
 }
