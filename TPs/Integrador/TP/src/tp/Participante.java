@@ -42,10 +42,11 @@ public class Participante {
     }
 
 
-    // Metodos Especificos
-
     @Override
     public String toString() {
         return "Participante{" + "nombre=" + nombre + ", pronosticos=" + pronosticos + '}';
     }
+    
+    // Metodos Especificos
+
 }
