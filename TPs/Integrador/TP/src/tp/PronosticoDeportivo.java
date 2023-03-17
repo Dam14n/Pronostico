@@ -55,7 +55,6 @@ public class PronosticoDeportivo {
         
         for (int i=0; i<cant_equipos; i++) {
             equipos[i] = new Equipo (equipo_nombres[i],"");
-//            equipos[i] = new Equipo (equipo_nombres[i],Integer.toString((i+1)));
         }
         return equipos;
     }
