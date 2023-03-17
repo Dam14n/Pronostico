@@ -15,9 +15,9 @@ public class Equipo {
     private String descripcion;
     
     // Metodos
-    public Equipo(String nombre, String descriopcion) {
+    public Equipo(String nombre, String descripcion) {
         this.nombre = nombre;
-        this.descripcion = descriopcion;
+        this.descripcion = descripcion;
     }
     
     public Equipo() {
@@ -43,7 +43,9 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombre=" + nombre + ", descriopcion=" + descripcion + '}';
+        //  return "Equipo{" + "nombre=" + nombre + ", descriopcion=" + descripcion + '}';
+        //  return ("Equipo  -->  " + this.nombre + this.descripcion);
+        return ("Equipo {" + "nombre=" + nombre + ", descriopcion=" + this.descripcion + ']');
     }
     
     // Metodos Especificos
