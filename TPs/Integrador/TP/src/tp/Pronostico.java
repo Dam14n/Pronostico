@@ -23,9 +23,39 @@ public class Pronostico {
     }
 
     public Pronostico() {
+        this.equipo = null;
+        this.partido = null;
+        this.resultado = ' ';
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
+    }
+
+    public Partido getPartido() {
+        return partido;
+    }
+
+    public void setPartido(Partido partido) {
         this.partido = partido;
+    }
+
+    public char getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(char resultado) {
         this.resultado = resultado;
     }
+
+    @Override
+    public String toString() {
+        return "Pronostico{" + "equipo=" + equipo + ", partido=" + partido + ", resultado=" + resultado + '}';
+    }
     
+    // Metodos Especificos
 }

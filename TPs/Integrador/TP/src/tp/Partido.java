@@ -12,61 +12,63 @@ package tp;
 
 public class Partido {
     // Atributos
-    private Equipo equipoLocal;
-    private Equipo equipoVisistante;
-    private Integer golesEquipoLocal;
-    private Integer golesEquipoVisitanate;
+    private Equipo equipo1;
+    private Equipo equipo2;
+    private Integer golesEquipo1;
+    private Integer golesEquipo2;
 
     // Metodos
-    public Partido(Equipo equipoLocal, Equipo equipoVisistante, 
-                   Integer golesEquipoLocal, Integer golesEquipoVisitanate) {
-        this.equipoLocal = equipoLocal;
-        this.equipoVisistante = equipoVisistante;
-        this.golesEquipoLocal = golesEquipoLocal;
-        this.golesEquipoVisitanate = golesEquipoVisitanate;
+    public Partido(Equipo equipo1, Equipo equipo2, Integer golesEquipo1, Integer golesEquipo2) {
+        this.equipo1 = equipo1;
+        this.equipo2 = equipo2;
+        this.golesEquipo1 = golesEquipo1;
+        this.golesEquipo2 = golesEquipo2;
     }
 
     public Partido() {
-        this.equipoLocal = equipoLocal;
-        this.equipoVisistante = equipoVisistante;
-        this.golesEquipoLocal = 0;
-        this.golesEquipoVisitanate = 0;
+        this.equipo1 = null;
+        this.equipo2 = null;
+        this.golesEquipo1 = 0;
+        this.golesEquipo2 = 0;
     }
 
-    public Equipo getEquipoLocal() {
-        return equipoLocal;
+    public Equipo getEquipo1() {
+        return equipo1;
     }
 
-    public void setEquipoLocal(Equipo equipoLocal) {
-        this.equipoLocal = equipoLocal;
+    public void setEquipo1(Equipo equipoLocal) {
+        this.equipo1 = equipoLocal;
     }
 
-    public Equipo getEquipoVisistante() {
-        return equipoVisistante;
+    public Equipo getEquipo2() {
+        return equipo2;
     }
 
-    public void setEquipoVisistante(Equipo equipoVisistante) {
-        this.equipoVisistante = equipoVisistante;
+    public void setEquipo2(Equipo equipoVisitante) {
+        this.equipo2 = equipoVisitante;
     }
 
-    public Integer getGolesEquipoLocal() {
-        return golesEquipoLocal;
+    public Integer getGolesEquipo1() {
+        return golesEquipo1;
     }
 
-    public void setGolesEquipoLocal(Integer golesEquipoLocal) {
-        this.golesEquipoLocal = golesEquipoLocal;
+    public void setGolesEquipo1(Integer golesEquipoLocal) {
+        this.golesEquipo1 = golesEquipoLocal;
     }
 
-    public Integer getGolesEquipoVisitanate() {
-        return golesEquipoVisitanate;
+    public Integer getGolesEquipo2() {
+        return golesEquipo2;
     }
 
-    public void setGolesEquipoVisitanate(Integer golesEquipoVisitanate) {
-        this.golesEquipoVisitanate = golesEquipoVisitanate;
+    public void setGolesEquipo2(Integer golesEquipoVisitanate) {
+        this.golesEquipo2 = golesEquipoVisitanate;
     }
 
     @Override
     public String toString() {
-        return "Partido{" + "equipoLocal=" + equipoLocal + ", equipoVisistante=" + equipoVisistante + ", golesEquipoLocal=" + golesEquipoLocal + ", golesEquipoVisitanate=" + golesEquipoVisitanate + '}';
+        return "Partido{" + "equipoLocal=" + equipo1 + ", equipoVisistante=" + equipo2 + ", "
+                + "golesEquipoLocal=" + golesEquipo1 + ", golesEquipoVisitanate=" + golesEquipo2 + '}';
     }
+    
+    // Metodos Especificos
 }

@@ -21,8 +21,8 @@ public class Equipo {
     }
     
     public Equipo() {
-        this.nombre = '';
-        this.descripcion = '';
+        this.nombre = null;
+        this.descripcion = null;
     }
 
     public String getNombre() {
@@ -45,4 +45,6 @@ public class Equipo {
     public String toString() {
         return "Equipo{" + "nombre=" + nombre + ", descriopcion=" + descripcion + '}';
     }
+    
+    // Metodos Especificos
 }
