@@ -1,31 +1,17 @@
-/*
-*
-*
-*/
-package tp;
 
-/**
- *
- * @author GUPO 7
- */
+package integrador;
+
+
 public class Pronostico {
-    // Atributos
-    private Equipo equipo;
-    private Partido partido;
-    private char resultado;
-    
-    // Metodos
+    //atributos
+    Equipo equipo;
+    Partido partido;
+    char resultado;
 
     public Pronostico(Equipo equipo, Partido partido, char resultado) {
         this.equipo = equipo;
         this.partido = partido;
         this.resultado = resultado;
-    }
-
-    public Pronostico() {
-        this.equipo = null;
-        this.partido = null;
-        this.resultado = ' ';
     }
 
     public Equipo getEquipo() {
@@ -52,10 +38,12 @@ public class Pronostico {
         this.resultado = resultado;
     }
 
-    @Override
-    public String toString() {
-        return "Pronostico{" + "equipo=" + equipo + ", partido=" + partido + ", resultado=" + resultado + '}';
-    }
     
-    // Metodos Especificos
+   /*
+    public int puntos (){
+        return resultado;
+    }
+     
+    */
+    
 }

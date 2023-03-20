@@ -6,7 +6,7 @@ package tp;
 
 /**
  *
- * @author SJorda
+ * @author GUPO 7
  */
 //import Equipo;
 

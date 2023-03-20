@@ -1,28 +1,18 @@
-/*
-*
-*
- */
-package tp;
 
-/**
- *
- * @author GUPO 7
- */
+package integrador;
 
 public class Equipo {
-    // Atributos
     private String nombre;
     private String descripcion;
-    
-    // Metodos
+            
+    public Equipo() { 
+        this.nombre = "";
+        this.descripcion = "";
+    }
+
     public Equipo(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-    }
-    
-    public Equipo() {
-        this.nombre = null;
-        this.descripcion = null;
     }
 
     public String getNombre() {
@@ -33,12 +23,12 @@ public class Equipo {
         this.nombre = nombre;
     }
 
-    public String getDescriopcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescriopcion(String descriopcion) {
-        this.descripcion = descriopcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
@@ -46,6 +36,6 @@ public class Equipo {
         return "Equipo{" + "nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
     
-    // Metodos Especificos
-
+    
+    
 }
