@@ -77,8 +77,10 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido{" + "equipoLocal=" + equipo1 + ", equipoVisistante=" + equipo2 + ", "
-                + "golesEquipoLocal=" + golesEquipo1 + ", golesEquipoVisitanate=" + golesEquipo2 + '}';
+        //        return "Partido{" + "equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", "
+        //        + "golesEquipo1=" + golesEquipo1 + ", golesEquipo2=" + golesEquipo2 + '}';
+        return "Partido{" + "idPartido=" + idPartido + "equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", "
+                + "golesEquipo1=" + golesEquipo1 + ", golesEquipo2=" + golesEquipo2 + '}';
     }
     
     // Metodos Especificos
