@@ -12,13 +12,15 @@ package tp;
 
 public class Partido {
     // Atributos
+    private int idPartido;
     private Equipo equipo1;
     private Equipo equipo2;
     private Integer golesEquipo1;
     private Integer golesEquipo2;
 
     // Metodos
-    public Partido(Equipo equipo1, Equipo equipo2, Integer golesEquipo1, Integer golesEquipo2) {
+    public Partido(int idPartido, Equipo equipo1, Equipo equipo2, Integer golesEquipo1, Integer golesEquipo2) {
+        this.idPartido = idPartido;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.golesEquipo1 = golesEquipo1;
@@ -26,10 +28,19 @@ public class Partido {
     }
 
     public Partido() {
+        this.idPartido = 0;
         this.equipo1 = null;
         this.equipo2 = null;
         this.golesEquipo1 = 0;
         this.golesEquipo2 = 0;
+    }
+
+    public int getIdPartido() {
+        return idPartido;
+    }
+
+    public void setIdPartido(int idPartido) {
+        this.idPartido = idPartido;
     }
 
     public Equipo getEquipo1() {
