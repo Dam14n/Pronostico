@@ -11,18 +11,29 @@ package tp;
 
 public class Equipo {
     // Atributos
+    private int idEquipo;
     private String nombre;
     private String descripcion;
     
     // Metodos
-    public Equipo(String nombre, String descripcion) {
+    public Equipo(int idEquipo,String nombre, String descripcion) {
+        this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
     
     public Equipo() {
+        this.idEquipo = 0;
         this.nombre = null;
         this.descripcion = null;
+    }
+
+    public int getIdEquipo() {
+        return idEquipo;
+    }
+
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
     }
 
     public String getNombre() {
@@ -43,7 +54,8 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        //        return "Equipo{" + "nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return "Equipo{" + "idEquipo="+ idEquipo + "nombre=" + nombre + ", descripcion=" + descripcion + '}';
     }
     
     // Metodos Especificos
