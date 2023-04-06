@@ -8,6 +8,6 @@ package tp;
  *
  * @author SJorda
  */
-public class NewClass {
+public class ListaPartipantes {
     
 }
