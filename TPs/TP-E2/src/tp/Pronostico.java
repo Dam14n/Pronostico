@@ -6,7 +6,7 @@ package tp;
 
 /**
  *
- * @author GUPO 7
+ * @author GRUPO 7
  */
 public class Pronostico {
     // Atributos
