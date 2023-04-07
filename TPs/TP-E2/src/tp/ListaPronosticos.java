@@ -161,26 +161,26 @@ public class ListaPronosticos {
 
                 // graba el equipo en memoria
                 //convertir un string a un entero;
-                int readidPronostico = Integer.parseInt(vectorPronostico[0]);
+                int readIdPronostico = Integer.parseInt(vectorPronostico[0]);
                 int readidParticipante = Integer.parseInt(vectorPronostico[1]);
                 int readidPartido = Integer.parseInt(vectorPronostico[2]);
                 int readidEquipo = Integer.parseInt(vectorPronostico[3]);
                 char readResultado = vectorPronostico[4].charAt(1);     // El primer caracter es una comilla delimitadora de campo
                 
                 // Obtener los objetos que necesito para el constructor
-                Partido partido = listapartidos.getPartido(readidPartido);
-                Equipo equipo = listaequipos.getEquipo(readidEquipo);
+                // Partido partido = listapartidos.getPartido(readidPartido);
+                // Equipo equipo = listaequipos.getEquipo(readidEquipo);
                 // crea el objeto en memoria
-                Pronostico pronostico = new Pronostico(
-                        readidPronostico, // El id leido del archivo
-                        equipo, // El Equipo que obtuvimos de la lista
-                        partido, // El Partido que obtuvimos de la lista
-                        readResultado, // El resultado que leimos del archivo,
-                        readidParticipante
+                // Pronostico pronostico = new Pronostico(
+                //        readidPronostico, // El id leido del archivo
+                //        equipo, // El Equipo que obtuvimos de la lista
+                //        partido, // El Partido que obtuvimos de la lista
+                //        readResultado, // El resultado que leimos del archivo,
+                //        readidParticipante
                 );
 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                this.addPronostico(pronostico);
+                // this.addPronostico(pronostico);
 
             }
             //closes the scanner

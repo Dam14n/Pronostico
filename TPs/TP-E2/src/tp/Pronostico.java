@@ -10,22 +10,33 @@ package tp;
  */
 public class Pronostico {
     // Atributos
+    private int idPronostico;
     private Equipo equipo;
     private Partido partido;
     private char resultado;
     
     // Metodos
 
-    public Pronostico(Equipo equipo, Partido partido, char resultado) {
+    public Pronostico(int idPronostico, Equipo equipo, Partido partido, char resultado) {
+        this.idPronostico = idPronostico; 
         this.equipo = equipo;
         this.partido = partido;
         this.resultado = resultado;
     }
 
     public Pronostico() {
+        this.idPronostico = 0; 
         this.equipo = null;
         this.partido = null;
         this.resultado = ' ';
+    }
+
+    public int getIdPronostico() {
+        return idPronostico;
+    }
+
+    public void setIdPronostico(int idPronostico) {
+        this.idPronostico = idPronostico;
     }
 
     public Equipo getEquipo() {

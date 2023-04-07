@@ -6,23 +6,34 @@ package tp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class ListaParticipantes {
     // atributo
+    private int idParticipante;
     private List<Participante> participantes;
     private String participantesCSV;
 
-    public ListaParticipantes(List<Participante> participantes, String participantesCSV) {
+    public ListaParticipantes(int idParticipante, List<Participante> participantes, String participantesCSV) {
+        this.idParticipante = idParticipante;
         this.participantes = participantes;
         this.participantesCSV = participantesCSV;
     }
     
     public ListaParticipantes() {
+        this.idParticipante = 0;
         this.participantes = new ArrayList<Participante>();
         this.participantesCSV = "./Archivos/participantes.csv";
+    }
+
+    public int getIdParticipante() {
+        return idParticipante;
+    }
+
+    public void setIdParticipante(int idParticipante) {
+        this.idParticipante = idParticipante;
     }
 
     public List<Participante> getParticipantes() {
@@ -120,13 +131,13 @@ public class ListaParticipantes {
                 
                 // graba el equipo en memoria
                 //convertir un string a un entero;
-                int idParticipante = Integer.parseInt(vectorParticipante[0]);
+                idParticipante = Integer.parseInt(vectorParticipante[0]);
                 String nombre = vectorParticipante[1];
                 // crea el objeto en memoria
-                participante = new Participante(idParticipante, nombre);
+                // participante = new Participante(idParticipante, nombre);
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                this.addParticipante(participante);
+                // this.addParticipante(participante);
             }
             //closes the scanner
         } catch (IOException ex) {

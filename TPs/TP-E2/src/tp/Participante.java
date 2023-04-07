@@ -11,18 +11,29 @@ package tp;
 
 public class Participante {
     // Atributos
+    private int idParticipante;
     private String nombre;
     private Pronostico[] pronosticos;
 
     // Metodos
-    public Participante(String nombre, Pronostico[] pronosticos) {
+    public Participante(int idParticipante, String nombre, Pronostico[] pronosticos) {
+        this.idParticipante = idParticipante;
         this.nombre = nombre;
         this.pronosticos = pronosticos;
     }
     
     public Participante() {
+        this.idParticipante = 0;
         this.nombre = null;
         this.pronosticos = new Pronostico[] {};
+    }
+
+    public int getIdParticipante() {
+        return idParticipante;
+    }
+
+    public void setIdParticipante(int idParticipante) {
+        this.idParticipante = idParticipante;
     }
 
     public String getNombre() {
