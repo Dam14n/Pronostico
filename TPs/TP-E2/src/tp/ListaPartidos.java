@@ -12,6 +12,7 @@ package tp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -49,33 +50,24 @@ class ListaPartidos {
         this.partidos.remove(partido);
     }
 
-    @Override
-    public String toString() {
-        return "ListaEquipos{" + "equipos=" + partidos + '}';
-    }
-    
-    // Metodos Especificos    
-    public String listar() {
-        String lista = "";
-        for (Partido partido: partidos) {
-            lista += System.lineSeparator() + partido;  // System.lineSeparator() se utiliza com separador de linea pero por S.O.
-        }           
-        return lista;
-    }
-
     // Raaliza la carga desde el archivo especificado
-    public void cargarDeArchivo() {
+    public void cargarDeArchivo() throws Exception {
         // para las lineas del archivo csv
         String datosPartido;
         // para los datos individuales de cada linea
         String vectorPartido[];
         // para el objeto en memoria
         Partido partido;
+        
+        // para la busqueda de los equipos
+        Equipo equipo1 = null;
+        Equipo equipo2 = null;
+
         int fila = 0;
        
         try { 
             Scanner sc = new Scanner(new File("./Archivos/partidos.csv"));
-            sc.useDelimiter("\n");   //setea el separador de los datos
+            sc.useDelimiter(System.lineSeparator());   //setea el separador de los datos
                 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
@@ -92,18 +84,50 @@ class ListaPartidos {
                 
                 // graba el equipo en memoria
                 //convertir un string a un entero;
-                int idPartido = Integer.parseInt(vectorPartido[0]);
-                //String nombre = 0//vectorPartido[1];
-                //String descripcion = vectorPartido[2];
+                int readIdPartido = Integer.parseInt(vectorPartido[0]);
+                int readIdEquipo1 = Integer.parseInt(vectorPartido[1]);
+                int readIdEquipo2 = Integer.parseInt(vectorPartido[2]);
+                int readGolesEquipo1 = Integer.parseInt(vectorPartido[3]);
+                int readGolesEquipo2 = Integer.parseInt(vectorPartido[4]);
+
+                try {
+                    //equipo1 = ListaEquipos.getEquipo(readIdEquipo1);
+                } catch (Exception e) {
+                    System.out.println("Mensaje: " + e.getMessage());
+                }
+                
+                try {
+                    //equipo2 = ListaEquipos.getEquipo(readIdEquipo2);
+                } catch (Exception e) {
+                    System.out.println("Mensaje: " + e.getMessage());
+                }
+                
                 // crea el objeto en memoria
-                //partido = new Partido(idPartido, nombre, descripcion);
+                partido = new Partido(readIdPartido, equipo1, equipo2, readGolesEquipo1, readGolesEquipo2);
+                // crea el objeto en memoria
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                //this.addPartido(partido);
+                this.addPartido(partido);
             }
-            //closes the scanner
+
+        //closes the scanner
         } catch (IOException ex) {
                 System.out.println("Mensaje: " + ex.getMessage());
         }           
+    }
+
+    @Override
+    public String toString() {
+        return "ListaEquipos{" + "equipos=" + partidos + '}';
+    }
+    
+    // Metodos Especificos    
+    public String listar() {
+        String lista = "";
+        for (Partido partido: partidos) {
+            lista += System.lineSeparator() + partido;  // System.lineSeparator() se utiliza com separador de linea pero por S.O.
+        } 
+        
+        return lista;
     }
 }

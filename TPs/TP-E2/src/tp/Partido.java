@@ -83,5 +83,28 @@ public class Partido {
                 + "golesEquipo1=" + golesEquipo1 + ", golesEquipo2=" + golesEquipo2 + '}';
     }
     
+    public char getResultado (Equipo equipo) {
+        char resultado = 'X'; // POR DEFECTO NO SE SABE QUIEN GANO
+        
+        if (equipo.getNombre().equals(equipo1.getNombre())) {
+            if (this.golesEquipo1 > this.golesEquipo2) {
+                resultado = 'G';
+            } else if (this.golesEquipo1 < this.golesEquipo2) {
+                resultado = 'P';
+            } else {
+                resultado = 'E';
+            }
+        } else if (equipo.getNombre().equals(equipo2.getNombre())) {
+            if (this.golesEquipo2 > this.golesEquipo1) {
+                resultado = 'G';
+            } else if (this.golesEquipo2 < this.golesEquipo1) {
+                resultado = 'P';
+            } else {
+                resultado = 'E';
+            }
+        } 
+        return resultado;
+    }
+    
     // Metodos Especificos
 }

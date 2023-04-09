@@ -6,12 +6,12 @@ package tp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import tp.Equipo;
 
 public class ListaPronosticos {
-
     // atributo
     private List<Pronostico> pronosticos;
     private String pronosticosCSV;
@@ -23,7 +23,7 @@ public class ListaPronosticos {
 
     public ListaPronosticos() {
         this.pronosticos = new ArrayList<Pronostico>();
-        this.pronosticosCSV = "./Archivos/pronosticos.csv";
+        this.pronosticosCSV = "pronosticos.csv";
     }
 
     public List<Pronostico> getPronosticos() {
@@ -100,27 +100,27 @@ public class ListaPronosticos {
 
                 // graba el equipo en memoria
                 //convertir un string a un entero;
-                int readidPronostico = Integer.parseInt(vectorPronostico[0]);
-                int readidParticipante = Integer.parseInt(vectorPronostico[1]);
+                int readIdPronostico = Integer.parseInt(vectorPronostico[0]);
+                int readIdParticipante = Integer.parseInt(vectorPronostico[1]);
                 int readIdPartido = Integer.parseInt(vectorPronostico[2]);
                 int readIdEquipo = Integer.parseInt(vectorPronostico[3]);
                 char readResultado = vectorPronostico[4].charAt(1);     // El primer caracter es una comilla delimitadora de campo
                 // Si coincide el idParticipante con el que estoy queriendo cargar,
                 // sigo, si no, salteo el registro y voy al siguiente
-                if (readidParticipante == idParticipante) {
+                if (readIdParticipante == idParticipante) {
                     // Obtener los objetos que necesito para el constructor
-                    Partido partido = listapartidos.getPartido(readIdPartido);
+                    //Partido partido = listapartidos.getPartido(readIdPartido);
                     Equipo equipo = listaequipos.getEquipo(readIdEquipo);
                     // crea el objeto en memoria
-                    Pronostico pronostico = new Pronostico(
-                            readidPronostico, // El id leido del archivo
-                            equipo, // El Equipo que obtuvimos de la lista
-                            partido, // El Partido que obtuvimos de la lista
-                            readResultado // El resultado que leimos del archivo
-                    );
+                    //Pronostico pronostico = new Pronostico(
+                    //        readIdPronostico, // El id leido del archivo
+                    //        equipo, // El Equipo que obtuvimos de la lista
+                    //        partido, // El Partido que obtuvimos de la lista
+                    //        readResultado // El resultado que leimos del archivo
+                    //);
 
                     // llama al metodo add para grabar el equipo en la lista en memoria
-                    this.addPronostico(pronostico);
+                    //this.addPronostico(pronostico);
                 }
             }
             //closes the scanner
@@ -162,25 +162,25 @@ public class ListaPronosticos {
                 // graba el equipo en memoria
                 //convertir un string a un entero;
                 int readIdPronostico = Integer.parseInt(vectorPronostico[0]);
-                int readidParticipante = Integer.parseInt(vectorPronostico[1]);
-                int readidPartido = Integer.parseInt(vectorPronostico[2]);
-                int readidEquipo = Integer.parseInt(vectorPronostico[3]);
+                int readIdParticipante = Integer.parseInt(vectorPronostico[1]);
+                int readIdPartido = Integer.parseInt(vectorPronostico[2]);
+                int readIdEquipo = Integer.parseInt(vectorPronostico[3]);
                 char readResultado = vectorPronostico[4].charAt(1);     // El primer caracter es una comilla delimitadora de campo
                 
                 // Obtener los objetos que necesito para el constructor
-                // Partido partido = listapartidos.getPartido(readidPartido);
-                // Equipo equipo = listaequipos.getEquipo(readidEquipo);
+                //Partido partido = listapartidos.getPartido(readIdPartido);
+                Equipo equipo = listaequipos.getEquipo(readIdEquipo);
                 // crea el objeto en memoria
-                // Pronostico pronostico = new Pronostico(
-                //        readidPronostico, // El id leido del archivo
+                //Pronostico pronostico = new Pronostico(
+                //        readIdPronostico, // El id leido del archivo
                 //        equipo, // El Equipo que obtuvimos de la lista
                 //        partido, // El Partido que obtuvimos de la lista
                 //        readResultado, // El resultado que leimos del archivo,
-                //        readidParticipante
-                );
+                //        readIdParticipante
+                //);
 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                // this.addPronostico(pronostico);
+                //this.addPronostico(pronostico);
 
             }
             //closes the scanner

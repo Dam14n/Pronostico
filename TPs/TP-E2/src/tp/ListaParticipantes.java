@@ -6,34 +6,23 @@ package tp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-//import java.util.Collections;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class ListaParticipantes {
     // atributo
-    private int idParticipante;
     private List<Participante> participantes;
     private String participantesCSV;
 
-    public ListaParticipantes(int idParticipante, List<Participante> participantes, String participantesCSV) {
-        this.idParticipante = idParticipante;
+    public ListaParticipantes(List<Participante> participantes, String participantesCSV) {
         this.participantes = participantes;
         this.participantesCSV = participantesCSV;
     }
     
     public ListaParticipantes() {
-        this.idParticipante = 0;
         this.participantes = new ArrayList<Participante>();
         this.participantesCSV = "./Archivos/participantes.csv";
-    }
-
-    public int getIdParticipante() {
-        return idParticipante;
-    }
-
-    public void setIdParticipante(int idParticipante) {
-        this.idParticipante = idParticipante;
     }
 
     public List<Participante> getParticipantes() {
@@ -71,12 +60,12 @@ public class ListaParticipantes {
         // buscaba todavía.
         Participante encontrado = null;
         // Recorro la lista de participantes que está cargada
-        for (Participante equipo : this.getParticipantes()) {
+        for (Participante eq : this.getParticipantes()) {
             // Para cada equipo obtengo el valor del ID y lo comparo con el que
             // estoy buscando
-            if (equipo.getIdParticipante() == idParticipante) {
+            if (eq.getIdParticipante() == idParticipante) {
                 // Si lo encuentro (son iguales) lo asigno como valor de encontrado
-                encontrado = equipo;
+                encontrado = eq;
                 // Y hago un break para salir del ciclo ya que no hace falta seguir buscando
                 break;
             }
@@ -95,12 +84,13 @@ public class ListaParticipantes {
     public String listar() {
         String lista = "";
         for (Participante participante: participantes) {
-            lista += "\n" + participante;
-        } 
-        
+            // lista += System.lineSeparator()"\n" + participante;
+            lista += System.lineSeparator() + participante;
+        }           
+ 
         return lista;
     }
-    
+
     // cargar desde el archivo
     public void cargarDeArchivo() {
         // para las lineas del archivo csv
@@ -113,7 +103,8 @@ public class ListaParticipantes {
        
         try { 
             Scanner sc = new Scanner(new File(this.getParticipantesCSV()));
-            sc.useDelimiter("\n");   //setea el separador de los datos
+            // sc.useDelimiter("\n");   //setea el separador de los datos
+            sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
                 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
@@ -131,13 +122,13 @@ public class ListaParticipantes {
                 
                 // graba el equipo en memoria
                 //convertir un string a un entero;
-                idParticipante = Integer.parseInt(vectorParticipante[0]);
-                String nombre = vectorParticipante[1];
+                int readIdParticipante = Integer.parseInt(vectorParticipante[0]);
+                String readNombre = vectorParticipante[1];
                 // crea el objeto en memoria
-                // participante = new Participante(idParticipante, nombre);
+                participante = new Participante(readIdParticipante, readNombre);
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                // this.addParticipante(participante);
+                this.addParticipante(participante);
             }
             //closes the scanner
         } catch (IOException ex) {

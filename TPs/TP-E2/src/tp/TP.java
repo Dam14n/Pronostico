@@ -3,7 +3,7 @@
  */
 package tp;
 
-import tp.PronosticoDeportivo;
+//import tp.PronosticoDeportivo;
 
 public class TP {
 

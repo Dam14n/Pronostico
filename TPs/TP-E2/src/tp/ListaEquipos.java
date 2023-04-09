@@ -12,6 +12,7 @@ package tp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -39,6 +40,14 @@ public class ListaEquipos {
         this.equipos = equipos;
     }
 
+    public String getEquiposCSV() {
+        return equiposCSV;
+    }
+
+    public void setEquiposCSV(String equiposCSV) {
+        this.equiposCSV = equiposCSV;
+    }
+    
     // Agregar elemento a la lista
     public void addEquipo(Equipo equipo) {
         this.equipos.add(equipo);
@@ -49,11 +58,30 @@ public class ListaEquipos {
         this.equipos.remove(equipo);
     }
 
+
+    public Equipo getEquipo(int idEquipo) {
+        Equipo equipoEncontrado = null;
+        
+        // Recorro la lista
+        for (Equipo equipo : this.getEquipos()) {
+            // Para cada equipo obtengo el valor del ID y lo comparo con el que
+            // estoy buscando
+            if (equipo.getIdEquipo() == idEquipo) {
+                // Si lo encuentro (son iguales) lo asigno como valor de encontrado
+                equipoEncontrado = equipo;
+                // Y hago un break para salir del ciclo ya que no hace falta seguir buscando
+                break;
+            }
+        }
+
+        return equipoEncontrado;
+    }
+
     @Override
     public String toString() {
         return "ListaEquipos{" + "equipos=" + equipos + '}';
     }
-    
+
     // Metodos Especificos    
     public String listar() {
         String lista = "";
@@ -75,9 +103,10 @@ public class ListaEquipos {
         int fila = 0;
        
         try { 
-            Scanner sc = new Scanner(new File("./Archivos/Equipos.csv"));
-            sc.useDelimiter("\n");   //setea el separador de los datos
-                
+            Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
+            // sc.useDelimiter("\n");   //setea el separador de los datos
+            sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos // System.lineSeparator() se utiliza com separador de linea pero por S.O.
+               
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosEquipo = sc.next();
@@ -92,12 +121,12 @@ public class ListaEquipos {
                 vectorEquipo = datosEquipo.split(",");   
                 
                 // graba el equipo en memoria
-                //convertir un string a un entero;
-                int idEquipo = Integer.parseInt(vectorEquipo[0]);
-                String nombre = vectorEquipo[1];
-                String descripcion = vectorEquipo[2];
+                // convertir un string a un entero;
+                int readIdEquipo = Integer.parseInt(vectorEquipo[0]);
+                String readNombre = vectorEquipo[1];
+                String readDescripcion = vectorEquipo[2];
                 // crea el objeto en memoria
-                equipo = new Equipo(idEquipo, nombre, descripcion);
+                equipo = new Equipo(readIdEquipo, readNombre, readDescripcion);
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
                 this.addEquipo(equipo);

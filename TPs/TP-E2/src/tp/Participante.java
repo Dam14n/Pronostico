@@ -22,6 +22,12 @@ public class Participante {
         this.pronosticos = pronosticos;
     }
     
+    public Participante(int idParticipante, String nombre) {
+        this.idParticipante = idParticipante;
+        this.nombre = nombre;
+        this.pronosticos = new Pronostico[] {};
+    }
+    
     public Participante() {
         this.idParticipante = 0;
         this.nombre = null;
