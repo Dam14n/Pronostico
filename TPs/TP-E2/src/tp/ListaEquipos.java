@@ -85,12 +85,17 @@ public class ListaEquipos {
     // Metodos Especificos    
     public String listar() {
         String lista = "";
+
+        lista += System.lineSeparator();
+        lista += "Los equipos cargados son : " + System.lineSeparator();
+        lista += "--------------------------" + System.lineSeparator();
+        
         for (Equipo equipo: equipos) {
-            lista += System.lineSeparator() + equipo;  // System.lineSeparator() se utiliza com separador de linea pero por S.O.
+            lista += equipo + System.lineSeparator();
         }           
         
         return lista;
-    }
+     }
 
     // Raaliza la carga desde el archivo especificado
     public void cargarDeArchivo() {
@@ -104,9 +109,11 @@ public class ListaEquipos {
        
         try { 
             Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
-            // sc.useDelimiter("\n");   //setea el separador de los datos
-            sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos // System.lineSeparator() se utiliza com separador de linea pero por S.O.
-               
+            sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
+
+            System.out.println("Los equipos cargados en el archivo son : ");
+            System.out.println("----------------------------------------");
+
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosEquipo = sc.next();

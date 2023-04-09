@@ -83,9 +83,13 @@ public class ListaParticipantes {
 
     public String listar() {
         String lista = "";
+
+        lista += System.lineSeparator();
+        lista += "Los participantes cargados son : " + System.lineSeparator();
+        lista += "--------------------------------" + System.lineSeparator();
+        
         for (Participante participante: participantes) {
-            // lista += System.lineSeparator()"\n" + participante;
-            lista += System.lineSeparator() + participante;
+            lista += participante + System.lineSeparator();
         }           
  
         return lista;
@@ -103,12 +107,15 @@ public class ListaParticipantes {
        
         try { 
             Scanner sc = new Scanner(new File(this.getParticipantesCSV()));
-            // sc.useDelimiter("\n");   //setea el separador de los datos
             sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
                 
+            System.out.println("Los participantes cargados en el archivo son : ");
+            System.out.println("----------------------------------------------");
+
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosParticipante = sc.next();
+                System.out.println(datosParticipante);  //muestra los datos levantados 
                 // Descomentar si se quiere mostrar cada línea leída desde el archivo
                 // System.out.println(datosParticipante);  //muestra los datos levantados 
                 fila ++;

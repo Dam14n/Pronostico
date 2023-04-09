@@ -50,6 +50,25 @@ class ListaPartidos {
         this.partidos.remove(partido);
     }
 
+    @Override
+    public String toString() {
+        return "ListaEquipos{" + "equipos=" + partidos + '}';
+    }
+    
+    // Metodos Especificos    
+    public String listar() {
+        String lista = "";
+        
+        lista += System.lineSeparator();
+        lista += "Los partidos cargados son : " + System.lineSeparator();
+        lista += "---------------------------" + System.lineSeparator();
+        
+        for (Partido partido: partidos) {
+            lista += partido + System.lineSeparator();  // System.lineSeparator() se utiliza com separador de linea pero por S.O.
+        } 
+        
+        return lista;
+    }
     // Raaliza la carga desde el archivo especificado
     public void cargarDeArchivo() // throws Exception {
     {
@@ -71,6 +90,9 @@ class ListaPartidos {
             Scanner sc = new Scanner(new File("./Archivos/partidos.csv"));
             sc.useDelimiter(System.lineSeparator());   //setea el separador de los datos
                 
+            System.out.println("Los partidos cargados en el archivo son : ");
+            System.out.println("-----------------------------------------");
+
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosPartido = sc.next();
@@ -80,7 +102,7 @@ class ListaPartidos {
                 if (fila == 1)
                     continue;              
                  
-                //Proceso auxiliar para convertir los string en vector
+                // Proceso auxiliar para convertir los string en vector
                 // guarda en un vector los elementos individuales
                 vectorPartido = datosPartido.split(",");   
                 
@@ -92,17 +114,8 @@ class ListaPartidos {
                 int readGolesEquipo1 = Integer.parseInt(vectorPartido[3]);
                 int readGolesEquipo2 = Integer.parseInt(vectorPartido[4]);
 
-                //try {
-                    equipo1 = listaequipos.getEquipo(readIdEquipo1);
-                //} catch (Exception e) {
-                //    System.out.println("Mensaje: " + e.getMessage());
-                //}
-                
-                //try {
-                    equipo2 = listaequipos.getEquipo(readIdEquipo2);
-                //} catch (Exception e) {
-                //    System.out.println("Mensaje: " + e.getMessage());
-                //}
+                equipo1 = listaequipos.getEquipo(readIdEquipo1);
+                equipo2 = listaequipos.getEquipo(readIdEquipo2);
                 
                 // crea el objeto en memoria
                 partido = new Partido(readIdPartido, equipo1, equipo2, readGolesEquipo1, readGolesEquipo2);
@@ -116,20 +129,5 @@ class ListaPartidos {
         } catch (IOException ex) {
                 System.out.println("Mensaje: " + ex.getMessage());
         }           
-    }
-
-    @Override
-    public String toString() {
-        return "ListaEquipos{" + "equipos=" + partidos + '}';
-    }
-    
-    // Metodos Especificos    
-    public String listar() {
-        String lista = "";
-        for (Partido partido: partidos) {
-            lista += System.lineSeparator() + partido;  // System.lineSeparator() se utiliza com separador de linea pero por S.O.
-        } 
-        
-        return lista;
     }
 }

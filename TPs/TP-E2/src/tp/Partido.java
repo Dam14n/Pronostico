@@ -77,10 +77,8 @@ public class Partido {
 
     @Override
     public String toString() {
-        //        return "Partido{" + "equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", "
-        //        + "golesEquipo1=" + golesEquipo1 + ", golesEquipo2=" + golesEquipo2 + '}';
-        return "Partido{" + "idPartido=" + idPartido + "equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", "
-                + "golesEquipo1=" + golesEquipo1 + ", golesEquipo2=" + golesEquipo2 + '}';
+        return "Partido  =  " + idPartido + ",  Equipo1  =  " + ",  Equipo2  =  " + 
+                ",  GolesEquipo1  =  " + golesEquipo1 + ",  GolesEquipo2  =  " + golesEquipo2 + ", Resultado  =  ";
     }
     
     public char getResultado (Equipo equipo) {
@@ -102,7 +100,8 @@ public class Partido {
             } else {
                 resultado = 'E';
             }
-        } 
+        }
+        
         return resultado;
     }
     
