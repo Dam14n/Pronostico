@@ -51,7 +51,8 @@ class ListaPartidos {
     }
 
     // Raaliza la carga desde el archivo especificado
-    public void cargarDeArchivo() throws Exception {
+    public void cargarDeArchivo() // throws Exception {
+    {
         // para las lineas del archivo csv
         String datosPartido;
         // para los datos individuales de cada linea
@@ -60,8 +61,9 @@ class ListaPartidos {
         Partido partido;
         
         // para la busqueda de los equipos
-        Equipo equipo1 = null;
-        Equipo equipo2 = null;
+        ListaEquipos listaequipos = new ListaEquipos();
+        Equipo equipo1;
+        Equipo equipo2;
 
         int fila = 0;
        
@@ -90,17 +92,17 @@ class ListaPartidos {
                 int readGolesEquipo1 = Integer.parseInt(vectorPartido[3]);
                 int readGolesEquipo2 = Integer.parseInt(vectorPartido[4]);
 
-                try {
-                    //equipo1 = ListaEquipos.getEquipo(readIdEquipo1);
-                } catch (Exception e) {
-                    System.out.println("Mensaje: " + e.getMessage());
-                }
+                //try {
+                    equipo1 = listaequipos.getEquipo(readIdEquipo1);
+                //} catch (Exception e) {
+                //    System.out.println("Mensaje: " + e.getMessage());
+                //}
                 
-                try {
-                    //equipo2 = ListaEquipos.getEquipo(readIdEquipo2);
-                } catch (Exception e) {
-                    System.out.println("Mensaje: " + e.getMessage());
-                }
+                //try {
+                    equipo2 = listaequipos.getEquipo(readIdEquipo2);
+                //} catch (Exception e) {
+                //    System.out.println("Mensaje: " + e.getMessage());
+                //}
                 
                 // crea el objeto en memoria
                 partido = new Partido(readIdPartido, equipo1, equipo2, readGolesEquipo1, readGolesEquipo2);

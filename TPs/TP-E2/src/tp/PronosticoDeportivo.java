@@ -31,8 +31,10 @@ public class PronosticoDeportivo {
         participantes.cargarDeArchivo();
         System.out.println("Los participantes cargados son: " + participantes.listar());
 
+        // cargar y listar los participantes
         //partidos.cargarDeArchivo(equipos);
-        // System.out.println("Los partidos cargados son: " + partidos.listar());
+        partidos.cargarDeArchivo();
+        System.out.println("Los partidos cargados son: " + partidos.listar());
 
         //Una vez cargados los participantes, para cada uno de ellos
         // cargar sus pronósticos

@@ -60,21 +60,21 @@ public class ListaEquipos {
 
 
     public Equipo getEquipo(int idEquipo) {
-        Equipo equipoEncontrado = null;
-        
+        Equipo encontrado = null;
+                
         // Recorro la lista
         for (Equipo equipo : this.getEquipos()) {
             // Para cada equipo obtengo el valor del ID y lo comparo con el que
             // estoy buscando
             if (equipo.getIdEquipo() == idEquipo) {
                 // Si lo encuentro (son iguales) lo asigno como valor de encontrado
-                equipoEncontrado = equipo;
+                encontrado = equipo;
                 // Y hago un break para salir del ciclo ya que no hace falta seguir buscando
                 break;
             }
         }
 
-        return equipoEncontrado;
+        return encontrado;
     }
 
     @Override
