@@ -32,17 +32,16 @@ public class PronosticoDeportivo {
         System.out.println(participantes.listar());
 
         // cargar y listar los participantes
-        //partidos.cargarDeArchivo(equipos);
-        partidos.cargarDeArchivo();
+        partidos.cargarDeArchivo(equipos);
         System.out.println(partidos.listar());
 
-        //Una vez cargados los participantes, para cada uno de ellos
+        // Una vez cargados los participantes, para cada uno de ellos
         // cargar sus pronósticos
-        // for (Participante p : participantes.getParticipantes()) {
-        //    p.cargarPronosticos(equipos, partidos);
-        //}
+        for (Participante participante : participantes.getParticipantes()) {
+            participante.cargarPronosticos(equipos, partidos);
+        }
         
-        // System.out.println("Los participantes cargados son: " + participantes.listar());
+        System.out.println(participantes.listar());
         
         // agregar y/o modificar el codigo que quieran
     } 

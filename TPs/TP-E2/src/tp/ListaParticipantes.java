@@ -49,6 +49,25 @@ public class ListaParticipantes {
         this.participantes.remove(p);
     }
     
+    @Override
+    public String toString() {
+        return "ListaParticipantes{" + "participantes=" + participantes + '}';
+    }
+
+    public String listar() {
+        String lista = "";
+
+        lista += System.lineSeparator();
+        lista += "Los participantes cargados son : " + System.lineSeparator();
+        lista += "--------------------------------" + System.lineSeparator();
+        
+        for (Participante participante: participantes) {
+            lista += participante + System.lineSeparator();
+        }           
+ 
+        return lista;
+    }
+
     /***
      * Este método devuelve un Participante (o null) buscandolo por idParticipante
      * @param idParticipante Identificador del equipo deseado
@@ -74,25 +93,6 @@ public class ListaParticipantes {
         // 1- Lo encontré en el ciclo, entonces encontrado tiene el objeto encontrado
         // 2- No lo encontré en el ciclo, entonces conserva el valor null del principio
         return encontrado;
-    }
-
-    @Override
-    public String toString() {
-        return "ListaParticipantes{" + "participantes=" + participantes + '}';
-    }
-
-    public String listar() {
-        String lista = "";
-
-        lista += System.lineSeparator();
-        lista += "Los participantes cargados son : " + System.lineSeparator();
-        lista += "--------------------------------" + System.lineSeparator();
-        
-        for (Participante participante: participantes) {
-            lista += participante + System.lineSeparator();
-        }           
- 
-        return lista;
     }
 
     // cargar desde el archivo

@@ -6,10 +6,9 @@ package tp;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-//import java.util.Arrays;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import tp.Equipo;
 
 public class ListaPronosticos {
     // atributo
@@ -23,7 +22,7 @@ public class ListaPronosticos {
 
     public ListaPronosticos() {
         this.pronosticos = new ArrayList<Pronostico>();
-        this.pronosticosCSV = "pronosticos.csv";
+        this.pronosticosCSV = "./Archivos/pronosticos.csv";
     }
 
     public List<Pronostico> getPronosticos() {
@@ -61,6 +60,7 @@ public class ListaPronosticos {
         for (Pronostico pronostico : pronosticos) {
             lista += "\n" + pronostico;
         }
+        
         return lista;
     }
 
@@ -81,13 +81,13 @@ public class ListaPronosticos {
 
         try {
             Scanner sc = new Scanner(new File(this.getPronosticosCSV()));
-            sc.useDelimiter("\n");   //setea el separador de los datos
+            sc.useDelimiter(System.lineSeparator());   //setea el separador de los datos
 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosPronostico = sc.next();
                 // Descomentar si se quiere mostrar cada línea leída desde el archivo
-                // System.out.println(datosPronostico);  //muestra los datos levantados 
+                System.out.println(datosPronostico);  //muestra los datos levantados 
                 fila++;
                 // si es la cabecera la descarto y no se considera para armar el listado
                 if (fila == 1) {
@@ -109,18 +109,18 @@ public class ListaPronosticos {
                 // sigo, si no, salteo el registro y voy al siguiente
                 if (readIdParticipante == idParticipante) {
                     // Obtener los objetos que necesito para el constructor
-                    //Partido partido = listapartidos.getPartido(readIdPartido);
+                    Partido partido = listapartidos.getPartido(readIdPartido);
                     Equipo equipo = listaequipos.getEquipo(readIdEquipo);
                     // crea el objeto en memoria
-                    //Pronostico pronostico = new Pronostico(
-                    //        readIdPronostico, // El id leido del archivo
-                    //        equipo, // El Equipo que obtuvimos de la lista
-                    //        partido, // El Partido que obtuvimos de la lista
-                    //        readResultado // El resultado que leimos del archivo
-                    //);
+                    Pronostico pronostico = new Pronostico(
+                            readIdPronostico, // El id leido del archivo
+                            equipo, // El Equipo que obtuvimos de la lista
+                            partido, // El Partido que obtuvimos de la lista
+                            readResultado // El resultado que leimos del archivo
+                    );
 
                     // llama al metodo add para grabar el equipo en la lista en memoria
-                    //this.addPronostico(pronostico);
+                    this.addPronostico(pronostico);
                 }
             }
             //closes the scanner
@@ -168,7 +168,7 @@ public class ListaPronosticos {
                 char readResultado = vectorPronostico[4].charAt(1);     // El primer caracter es una comilla delimitadora de campo
                 
                 // Obtener los objetos que necesito para el constructor
-                //Partido partido = listapartidos.getPartido(readIdPartido);
+                Partido partido = listapartidos.getPartido(readIdPartido);
                 Equipo equipo = listaequipos.getEquipo(readIdEquipo);
                 // crea el objeto en memoria
                 //Pronostico pronostico = new Pronostico(
@@ -181,9 +181,9 @@ public class ListaPronosticos {
 
                 // llama al metodo add para grabar el equipo en la lista en memoria
                 //this.addPronostico(pronostico);
-
             }
-            //closes the scanner
+            
+        // closes the scanner
         } catch (IOException ex) {
             System.out.println("Mensaje: " + ex.getMessage());
         }

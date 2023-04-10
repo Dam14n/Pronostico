@@ -77,8 +77,9 @@ public class Partido {
 
     @Override
     public String toString() {
-        return "Partido  =  " + idPartido + ",  Equipo1  =  " + ",  Equipo2  =  " + 
-                ",  GolesEquipo1  =  " + golesEquipo1 + ",  GolesEquipo2  =  " + golesEquipo2 + ", Resultado  =  ";
+        return "Partido  =  " + this.idPartido + ",  Equipo1  =  " + this.equipo1.getNombre() + 
+                ",  Equipo2  =  " + this.equipo2.getNombre() +  ",  GolesEquipo1  =  " + this.golesEquipo1 + 
+                ",  GolesEquipo2  =  " + this.golesEquipo2 + ", Resultado  =  ";
     }
     
     public char getResultado (Equipo equipo) {

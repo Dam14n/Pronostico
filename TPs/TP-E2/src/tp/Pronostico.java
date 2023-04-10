@@ -11,21 +11,33 @@ package tp;
 public class Pronostico {
     // Atributos
     private int idPronostico;
+    private Participante participante;
     private Equipo equipo;
     private Partido partido;
     private char resultado;
+    
     
     // Metodos
 
     public Pronostico(int idPronostico, Equipo equipo, Partido partido, char resultado) {
         this.idPronostico = idPronostico; 
+        this.participante = null; 
         this.equipo = equipo;
         this.partido = partido;
         this.resultado = resultado;
     }
 
+    public Pronostico(int idPronostico, Equipo equipo, Partido partido, char resultado,  Participante participante) {
+        this.idPronostico = idPronostico; 
+        this.equipo = equipo;
+        this.partido = partido;
+        this.resultado = resultado;
+        this.participante = participante; 
+    }
+    
     public Pronostico() {
         this.idPronostico = 0; 
+        this.participante = null;
         this.equipo = null;
         this.partido = null;
         this.resultado = ' ';
@@ -65,7 +77,7 @@ public class Pronostico {
 
     @Override
     public String toString() {
-        return "Pronostico{" + "equipo=" + equipo + ", partido=" + partido + ", resultado=" + resultado + '}';
+        return "Pronostico{" + "equipo=" + this.equipo + ", partido=" + this.partido + ", resultado=" + this.resultado + '}';
     }
     
     // Metodos Especificos
