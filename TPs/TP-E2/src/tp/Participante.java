@@ -91,7 +91,7 @@ public class Participante {
         // de esa lista se obtiene cada pronostico y se saca el puntaje acumulandolo en 
         // la variable puntaje
         for (Pronostico pronostico : this.getPronosticos().getPronosticos()) {
-        //    puntaje += pronostico.getPuntaje();
+//            puntaje += pronostico.getPuntaje();
         }
 
         return puntaje;
