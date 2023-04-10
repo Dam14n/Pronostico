@@ -79,7 +79,8 @@ public class Partido {
     public String toString() {
         return "Partido  =  " + this.idPartido + ",  Equipo1  =  " + this.equipo1.getNombre() + 
                 ",  Equipo2  =  " + this.equipo2.getNombre() +  ",  GolesEquipo1  =  " + this.golesEquipo1 + 
-                ",  GolesEquipo2  =  " + this.golesEquipo2 + ", Resultado  =  ";
+                ",  GolesEquipo2  =  " + this.golesEquipo2 + ", Resultado  =  " + 
+                this.getResultado(equipo1);
     }
     
     public char getResultado (Equipo equipo) {
