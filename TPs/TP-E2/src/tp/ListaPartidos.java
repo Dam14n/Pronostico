@@ -91,15 +91,14 @@ class ListaPartidos {
         lista += "---------------------------" + System.lineSeparator();
         
         for (Partido partido: partidos) {
-            lista += partido + System.lineSeparator();  // System.lineSeparator() se utiliza com separador de linea pero por S.O.
+            lista += partido + System.lineSeparator();
         } 
         
         return lista;
     }
     
     // Raaliza la carga desde el archivo especificado
-    public void cargarDeArchivo(ListaEquipos listaequipos)
-    {
+    public void cargarDeArchivo(ListaEquipos listaequipos) {
         // para las lineas del archivo csv
         String datosPartido;
         // para los datos individuales de cada linea

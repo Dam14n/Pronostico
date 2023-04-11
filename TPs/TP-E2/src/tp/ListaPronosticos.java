@@ -81,7 +81,7 @@ public class ListaPronosticos {
 
         try {
             Scanner sc = new Scanner(new File(this.getPronosticosCSV()));
-            sc.useDelimiter(System.lineSeparator());   //setea el separador de los datos
+            sc.useDelimiter(System.lineSeparator());
 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
