@@ -20,6 +20,10 @@ public class ListaEquipos {
     // Atributos
     private List<Equipo> equipos;
     private String equiposCSV;
+    private String directotioDeArchivos;
+    private String nombreDeArchivo;
+    private String extensionDeArchivo;
+    private String archivoDeDatos;
     
     // Metodos
     public ListaEquipos(List<Equipo> equipos, String equiposCSV) {
@@ -116,16 +120,20 @@ public class ListaEquipos {
         int fila = 0;
        
         try { 
-            Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
+//            Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
+            Scanner sc = new Scanner(new File(this.getEquiposCSV()));
             sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
 
-            System.out.println("Los equipos cargados en el archivo son : ");
-            System.out.println("----------------------------------------");
+            //System.out.println("Los equipos cargados en el archivo son : ");
+            //System.out.println("----------------------------------------");
 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosEquipo = sc.next();
-                System.out.println(datosEquipo);  //muestra los datos levantados 
+                
+                //
+                //System.out.println(datosEquipo);  //muestra los datos levantados 
+                
                 fila ++;
                 // si es la cabecera la descarto y no se considera para armar el listado
                 if (fila == 1)
