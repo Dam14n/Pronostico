@@ -54,7 +54,8 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo  =  " + idEquipo + ",  Nombre  =  " + nombre + ",  Descripcion  =  " + descripcion;
+        return "Equipo  -->  " + idEquipo + "Nombre  -->  " + nombre +
+               "Descripcion  -->  " + descripcion;
     }
     
     // Metodos Especificos

@@ -20,6 +20,10 @@ public class ListaEquipos {
     // Atributos
     private List<Equipo> equipos;
     private String equiposCSV;
+    private String directotioArchivos;
+    private String nombreArchivo;
+    private String extensionArchivo;
+    private String archivoDatos;
     
     // Metodos
     public ListaEquipos(List<Equipo> equipos, String equiposCSV) {
@@ -46,6 +50,38 @@ public class ListaEquipos {
 
     public void setEquiposCSV(String equiposCSV) {
         this.equiposCSV = equiposCSV;
+    }
+    
+        public String getDirectotioArchivos() {
+        return directotioArchivos;
+    }
+
+    public void setDirectotioArchivos(String directotioArchivos) {
+        this.directotioArchivos = directotioArchivos;
+    }
+
+    public String getNombreArchivo() {
+        return nombreArchivo;
+    }
+
+    public void setNombreArchivo(String nombreArchivo) {
+        this.nombreArchivo = nombreArchivo;
+    }
+
+    public String getExtensionArchivo() {
+        return extensionArchivo;
+    }
+
+    public void setExtensionArchivo(String extensionArchivo) {
+        this.extensionArchivo = extensionArchivo;
+    }
+
+    public String getArchivoDatos() {
+        return archivoDatos;
+    }
+
+    public void setArchivoDatos(String archivoDatos) {
+        this.archivoDatos = archivoDatos;
     }
     
     // Agregar elemento a la lista
@@ -116,16 +152,17 @@ public class ListaEquipos {
         int fila = 0;
        
         try { 
-            Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
+            //      Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
+            Scanner sc = new Scanner(new File(this.getEquiposCSV()));
             sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
 
-            System.out.println("Los equipos cargados en el archivo son : ");
-            System.out.println("----------------------------------------");
+            //System.out.println("Los equipos cargados en el archivo son : ");
+            //System.out.println("----------------------------------------");
 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosEquipo = sc.next();
-                System.out.println(datosEquipo);  //muestra los datos levantados 
+                //      System.out.println(datosEquipo);  //muestra los datos levantados 
                 fila ++;
                 // si es la cabecera la descarto y no se considera para armar el listado
                 if (fila == 1)
