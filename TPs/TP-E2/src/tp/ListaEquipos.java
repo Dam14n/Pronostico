@@ -20,10 +20,6 @@ public class ListaEquipos {
     // Atributos
     private List<Equipo> equipos;
     private String equiposCSV;
-    private String directotioArchivos;
-    private String nombreArchivo;
-    private String extensioneArchivo;
-    private String archivoDatos;
    
     // Metodos
     public ListaEquipos(List<Equipo> equipos, String equiposCSV) {
@@ -52,38 +48,6 @@ public class ListaEquipos {
         this.equiposCSV = equiposCSV;
     }
 
-    public String getDirectotioArchivos() {
-        return directotioArchivos;
-    }
-
-    public void setDirectotioArchivos(String directotioArchivos) {
-        this.directotioArchivos = directotioArchivos;
-    }
-
-    public String getNombreArchivo() {
-        return nombreArchivo;
-    }
-
-    public void setNombreArchivo(String nombreArchivo) {
-        this.nombreArchivo = nombreArchivo;
-    }
-
-    public String getExtensioneArchivo() {
-        return extensioneArchivo;
-    }
-
-    public void setExtensioneArchivo(String extensioneArchivo) {
-        this.extensioneArchivo = extensioneArchivo;
-    }
-
-    public String getArchivoDatos() {
-        return archivoDatos;
-    }
-
-    public void setArchivoDatos(String archivoDatos) {
-        this.archivoDatos = archivoDatos;
-    }
-    
     // Agregar elemento a la lista
     public void addEquipo(Equipo equipo) {
         this.equipos.add(equipo);

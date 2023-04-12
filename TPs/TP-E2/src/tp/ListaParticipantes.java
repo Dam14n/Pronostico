@@ -14,10 +14,6 @@ public class ListaParticipantes {
     // atributo
     private List<Participante> participantes;
     private String participantesCSV;
-    private String directotioArchivos;
-    private String nombreArchivo;
-    private String extensioneArchivo;
-    private String archivoDatos;
 
     public ListaParticipantes(List<Participante> participantes, String participantesCSV) {
         this.participantes = participantes;

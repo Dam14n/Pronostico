@@ -15,9 +15,6 @@ public class ListaPronosticos {
     private List<Pronostico> pronosticos;
     private String pronosticosCSV;
     private String directotioArchivos;
-    private String nombreArchivo;
-    private String extensioneArchivo;
-    private String archivoDatos;
 
     public ListaPronosticos(List<Pronostico> pronosticos, String pronosticosCSV) {
         this.pronosticos = pronosticos;
