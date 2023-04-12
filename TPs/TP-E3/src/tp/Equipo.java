@@ -1,11 +1,8 @@
 /*
-*
-*
- */
+*/
 package tp;
 
 /**
- *
  * @author GRUPO 7
  */
 

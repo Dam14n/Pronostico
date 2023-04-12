@@ -20,10 +20,10 @@ public class ListaEquipos {
     // Atributos
     private List<Equipo> equipos;
     private String equiposCSV;
-    private String directotioArchivos;
-    private String nombreArchivo;
-    private String extensionArchivo;
-    private String archivoDatos;
+    //private String directotioArchivos;
+    //private String nombreArchivo;
+    //private String extensionArchivo;
+    //private String archivoDatos;
     
     // Metodos
     public ListaEquipos(List<Equipo> equipos, String equiposCSV) {
