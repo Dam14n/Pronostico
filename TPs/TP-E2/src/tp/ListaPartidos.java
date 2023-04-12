@@ -20,6 +20,10 @@ class ListaPartidos {
     // Atributos
     private List<Partido> partidos;
     private String partidosCSV;
+    private String directotioArchivos;
+    private String nombreArchivo;
+    private String extensioneArchivo;
+    private String archivoDatos;
     
     // Metodos
     public ListaPartidos(List<Partido> partidos, String partidosCSV) {
