@@ -3,7 +3,6 @@ Para entrega 2
  */
 package com.mycompany.mitpmaven;
 
-
 /**
  *
  * @author aguzman
@@ -35,6 +34,7 @@ public class PronosticoDeportivo {
     public void play(){
 //    public void play(String tipoCarga){
         // cargar y listar los equipos
+        equipos.cargaDeDatos();
         equipos.cargarDeArchivo();
         System.out.println(equipos.listar());
         

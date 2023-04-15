@@ -3,22 +3,23 @@
 package com.mycompany.mitpmaven;
 
 /**
-* @author SJorda
+* @author  GRUPO 7
 */
-public class DatosArchivo {
+
+public class Archivos {
     private String nombreArchivo;   // el nombre deberia ser obligatorio
     private String extensionArchivo;    // la extension deberia ser abligatoria
     private String directotioArchivos;  // el directorio de los archivos es el que se indique y se pas deberia ser el directorio don se est ejecutando + Archivos ej (./Archivos/)
     private String archivoDatos;
 
-    public DatosArchivo(String directotioArchivos, String nombreArchivo, String extensionArchivo, String archivoDatos) {
+    public Archivos(String directotioArchivos, String nombreArchivo, String extensionArchivo, String archivoDatos) {
         this.directotioArchivos = directotioArchivos;
         this.nombreArchivo = nombreArchivo;
         this.extensionArchivo = extensionArchivo;
         this.archivoDatos = archivoDatos;
     }
 
-    public DatosArchivo() {
+    public Archivos() {
         this.directotioArchivos = "./Archivos/";
         this.nombreArchivo = null;
         this.extensionArchivo = null;
