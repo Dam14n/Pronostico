@@ -77,10 +77,21 @@ public class Partido {
 
     @Override
     public String toString() {
+        return this.idPartido + "\t" + this.equipo1.getNombre() + "\t" + 
+               this.equipo2.getNombre() + "\t" + this.golesEquipo1 +  "\t" + 
+               this.golesEquipo2 +  "\t" + this.getResultado(equipo1) + "\t";
+/*
+        String res = 
+                "-----------------------------------------\n"+
+                this.equipo1.getNombre()+" vs. "+this.equipo2.getNombre()+"\n"+
+                "Resultado: "+this.golesEquipo1+ " a "+this.golesEquipo2+"\n"+
+                "-----------------------------------------\n";
+/*
         return "Partido  =  " + this.idPartido + ",  Equipo1  =  " + this.equipo1.getNombre() + 
                 ",  Equipo2  =  " + this.equipo2.getNombre() +  ",  GolesEquipo1  =  " + this.golesEquipo1 + 
                 ",  GolesEquipo2  =  " + this.golesEquipo2 + ", Resultado  =  " + 
                 this.getResultado(equipo1);
+*/
     }
     
     public char getResultado (Equipo equipo) {

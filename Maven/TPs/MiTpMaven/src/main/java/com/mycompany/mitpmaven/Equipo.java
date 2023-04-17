@@ -51,8 +51,8 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo  -->  " + idEquipo + "Nombre  -->  " + nombre +
-               "Descripcion  -->  " + descripcion;
+        return this.idEquipo + "\t" + this.nombre + "\t" +
+               this.descripcion + "\t";
     }
     
     // Metodos Especificos

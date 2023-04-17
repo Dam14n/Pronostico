@@ -6,6 +6,7 @@ package com.mycompany.mitpmaven;
 import static com.mycompany.mitpmaven.BaseDeDatos.abrirConexion;
 import static com.mycompany.mitpmaven.BaseDeDatos.cerrarConexion;
 import static com.mycompany.mitpmaven.BaseDeDatos.crearSentencia;
+import de.vandermeer.asciitable.AsciiTable;
 import java.io.File;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
+import org.beryx.textio.system.SystemTextTerminal;
 
 public class ListaParticipantes {
     // atributo
@@ -60,20 +64,6 @@ public class ListaParticipantes {
         return "ListaParticipantes{" + "participantes=" + participantes + '}';
     }
 
-    public String listar() {
-        String lista = "";
-
-        lista += System.lineSeparator();
-        lista += "Los participantes cargados son : " + System.lineSeparator();
-        lista += "--------------------------------" + System.lineSeparator();
-        
-        for (Participante participante: participantes) {
-            lista += participante + System.lineSeparator();
-        }           
- 
-        return lista;
-    }
-
     /***
      * Este método devuelve un Participante (o null) buscandolo por idParticipante
      * @param idParticipante Identificador del equipo deseado
@@ -101,16 +91,68 @@ public class ListaParticipantes {
         return encontrado;
     }
 
-    // Seleccion de la carga de datos
-    public void cargaDeDatos(int opcion, ListaParticipantes listaparticipantes) {
+    // Metodos Especificos    
+    public void listar(int opcion) {
         switch (opcion) {
-            case 1 -> cargarDeArchivo(listaparticipantes);  // Carga desde la base de datos0
-            case 2 -> cargarDeDb(listaparticipantes);   // Carga desde la base de datos
-            default -> {
+            case 1 :
+                listadoEstandar();  // Listado para carga de archivos
+                break;
+            case 2 :
+                listadoTabla();   // Listado para carga de DB
+                break;
+            default :
                 System.out.println();
                 System.out.println("Opción no implementada.");
                 System.out.println();
-            }
+        }
+    }
+
+    public void listadoEstandar() {
+        String lista = "";
+
+        lista += System.lineSeparator();
+        lista += "Los participantes cargados son : " + System.lineSeparator();
+        lista += "--------------------------------" + System.lineSeparator();
+        
+        for (Participante participante: participantes) {
+            lista += participante + System.lineSeparator();
+        }           
+ 
+        System.out.println(lista);
+    }
+    
+    public void listadoTabla() {
+        SystemTextTerminal systerm = new SystemTextTerminal();
+        TextIO textIO = new TextIO (systerm);
+        TextTerminal terminal = textIO.getTextTerminal();
+        AsciiTable at = new AsciiTable();
+        at.addRule();
+        at.addRow("    Número    ","    Descripción    ");
+        at.addRule();
+
+        for (Participante participante : participantes) {
+            at.addRow(participante.getIdParticipante(), participante.getNombre());
+        }           
+
+        at.addRule();
+        String rend = at.render();
+        terminal.print (rend);
+        System.out.println();
+    }
+    
+    // Seleccion de la carga de datos
+    public void cargaDeDatos(int opcion, ListaParticipantes listaparticipantes) {
+        switch (opcion) {
+            case 1 :
+                cargarDeArchivo(listaparticipantes);  // Carga desde la base de datos0
+                break;
+            case 2 :
+                cargarDeDb(listaparticipantes);   // Carga desde la base de datos
+                break;
+            default :
+                System.out.println();
+                System.out.println("Opción no implementada.");
+                System.out.println();
         }
     }
 
@@ -125,16 +167,17 @@ public class ListaParticipantes {
         int fila = 0;
        
         try { 
-            Scanner sc = new Scanner(new File(this.getParticipantesCSV()));
+            Scanner sc;
+            sc = new Scanner(new File(this.getParticipantesCSV()));
             sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
                 
-            System.out.println("Los participantes cargados en el archivo son : ");
-            System.out.println("----------------------------------------------");
+            //System.out.println("Los participantes cargados en el archivo son : ");
+            //System.out.println("----------------------------------------------");
 
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosParticipante = sc.next();
-                System.out.println(datosParticipante);  //muestra los datos levantados 
+                //System.out.println(datosParticipante);  //muestra los datos levantados 
                 // Descomentar si se quiere mostrar cada línea leída desde el archivo
                 // System.out.println(datosParticipante);  //muestra los datos levantados 
                 fila ++;
@@ -154,15 +197,18 @@ public class ListaParticipantes {
                 participante = new Participante(readIdParticipante, readNombre);
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                this.addParticipante(participante);
+                //this.addParticipante(participante);
+                listaparticipantes.addParticipante(participante);
             }
+
             //closes the scanner
+            sc.close();
         } catch (IOException ex) {
                 System.out.println("Mensaje: " + ex.getMessage());
         }       
     }
 
-// cargar desde la base de datos
+    // cargar desde la base de datos
     public void cargarDeDb(ListaParticipantes listaparticipantes) {
         // Todas las lineas comentadas son del codigo original 
         //Connection conn = null;
@@ -171,11 +217,10 @@ public class ListaParticipantes {
             
             // Establecer una conexión
             //conn = DriverManager.getConnection("jdbc:sqlite:./Archivos/pronosticos.db");
-            //conn = abrirConexion();
             abrirConexion();
             
             // Crear la base de datos
-            // Statement stmt = conn.createStatement();
+            //Statement stmt = conn.createStatement();
             Statement stmt = crearSentencia();
 
             //System.out.println("Consultando datos...");
@@ -194,9 +239,6 @@ public class ListaParticipantes {
                 //lista.addEquipo(e);
                 listaparticipantes.addParticipante(p);
             }
-
-            //System.out.println("Mostrando los OBJETOS de ListaEquipos...");
-            //System.out.println(lista.listar());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {

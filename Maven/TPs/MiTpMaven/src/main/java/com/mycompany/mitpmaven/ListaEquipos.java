@@ -105,19 +105,22 @@ public class ListaEquipos {
     }
 
     // Metodos Especificos    
-    public void listados(int opcion) {
+    public void listar(int opcion) {
         switch (opcion) {
-            case 1 -> System.out.println(listar());  // Listado para carga de archivos
-            case 2 -> listarEnTabla();   // Listado para carga de DB
-            default -> {
+            case 1 :
+                listadoEstandar();  // Listado para carga de archivos
+                break;
+            case 2 :
+                listadoTabla();   // Listado para carga de DB
+                break;
+            default :
                 System.out.println();
                 System.out.println("Opción no implementada.");
                 System.out.println();
-            }
         }
     }
     
-    public String listar() {
+    public void listadoEstandar() {
         String lista = "";
 
         lista += System.lineSeparator();
@@ -128,10 +131,10 @@ public class ListaEquipos {
             lista += equipo + System.lineSeparator();
         }           
         
-        return lista;
+        System.out.println(lista);
     }
     
-    public void listarEnTabla() {
+    public void listadoTabla() {
         SystemTextTerminal systerm = new SystemTextTerminal();
         TextIO textIO = new TextIO (systerm);
         TextTerminal terminal = textIO.getTextTerminal();
@@ -140,7 +143,7 @@ public class ListaEquipos {
         at.addRow("    Número    ","    Descripción    ");
         at.addRule();
 
-        for (Equipo equipo: equipos) {
+        for (Equipo equipo : equipos) {
             at.addRow(equipo.getIdEquipo(), equipo.getNombre());
         }           
 
@@ -153,13 +156,16 @@ public class ListaEquipos {
     // Seleccion de la carga de datos
     public void cargaDeDatos(int opcion, ListaEquipos listaequipos) {
         switch (opcion) {
-            case 1 -> cargarDeArchivo(listaequipos);  // Carga desde la base de datos0
-            case 2 -> cargarDeDb(listaequipos);   // Carga desde la base de datos
-            default -> {
+            case 1 :
+                cargarDeArchivo(listaequipos);  // Carga desde la base de datos0
+                break;
+            case 2 :
+                cargarDeDb(listaequipos);   // Carga desde la base de datos
+                break;
+            default :
                 System.out.println();
                 System.out.println("Opción no implementada.");
                 System.out.println();
-            }
         }
     }
     
@@ -173,10 +179,6 @@ public class ListaEquipos {
         Equipo equipo;
         int fila = 0;
        
-        System.out.println ();
-        System.out.println("Cargando desde archivo " + " ...");
-        System.out.println ();
-
         try { 
             //Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
             Scanner sc;
@@ -208,7 +210,8 @@ public class ListaEquipos {
                 equipo = new Equipo(readIdEquipo, readNombre, readDescripcion);
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                this.addEquipo(equipo);
+                //this.addEquipo(equipo);
+                listaequipos.addEquipo(equipo);
                 //System.out.println(equipo);  //muestra los datos levantados 
             }
 

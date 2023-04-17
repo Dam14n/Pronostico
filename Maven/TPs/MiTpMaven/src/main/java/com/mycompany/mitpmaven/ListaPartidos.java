@@ -1,20 +1,21 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+*/
 package com.mycompany.mitpmaven;
 
 /**
- *
- * @author GRUPO 7
- */
+* @author GRUPO 7
+*/
 
+import de.vandermeer.asciitable.AsciiTable;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
+import org.beryx.textio.system.SystemTextTerminal;
 
 class ListaPartidos {
     // Atributos
@@ -40,6 +41,14 @@ class ListaPartidos {
         this.partidos = partidos;
     }
 
+    public String getPartidosCSV() {
+        return partidosCSV;
+    }
+
+    public void setPartidosCSV(String partidosCSV) {
+        this.partidosCSV = partidosCSV;
+    }
+    
     // Agregar elemento a la lista
     public void addPartido(Partido partido) {
         this.partidos.add(partido);
@@ -83,7 +92,22 @@ class ListaPartidos {
     }
     
     // Metodos Especificos    
-    public String listar() {
+    public void listar(int opcion) {
+        switch (opcion) {
+            case 1 :
+                listadoEstandar();  // Listado para carga de archivos
+                break;
+            case 2 :
+                listadoTabla();   // Listado para carga de DB
+                break;
+            default :
+                System.out.println();
+                System.out.println("Opción no implementada.");
+                System.out.println();
+        }
+    }
+    
+    public void listadoEstandar() {
         String lista = "";
         
         lista += System.lineSeparator();
@@ -94,22 +118,42 @@ class ListaPartidos {
             lista += partido + System.lineSeparator();
         } 
         
-        return lista;
+        System.out.println(lista);
     }
     
     // Seleccion de la carga de datos
     public void cargaDeDatos(int opcion, ListaEquipos listaequipos) {
         switch (opcion) {
-            case 1 -> cargarDeArchivo(listaequipos);  // Carga desde la base de datos0
-            case 2 -> cargarDeDb(listaequipos);   // Carga desde la base de datos
-            default -> {
+            case 1 : 
+                cargarDeArchivo(listaequipos);  // Carga desde la base de datos0
+            case 2 :
+                cargarDeDb(listaequipos);   // Carga desde la base de datos
+            default :
                 System.out.println();
                 System.out.println("Opción no implementada.");
                 System.out.println();
-            }
         }
     }
 
+    public void listadoTabla() {
+        SystemTextTerminal systerm = new SystemTextTerminal();
+        TextIO textIO = new TextIO (systerm);
+        TextTerminal terminal = textIO.getTextTerminal();
+        AsciiTable at = new AsciiTable();
+        at.addRule();
+        at.addRow("    Número    ","    Descripción    ");
+        at.addRule();
+
+        for (Partido partido : partidos) {
+            //at.addRow(equipo.getIdEquipo(), equipo.getNombre());
+        }           
+
+        at.addRule();
+        String rend = at.render();
+        terminal.print (rend);
+        System.out.println();
+    }
+    
     // cargar desde el archivo
     public void cargarDeArchivo(ListaEquipos listaequipos) {
         // para las lineas del archivo csv
@@ -122,7 +166,9 @@ class ListaPartidos {
         int fila = 0;
        
         try { 
-            Scanner sc = new Scanner(new File("./Archivos/partidos.csv"));
+            Scanner sc;
+            //sc = new Scanner(new File("./Archivos/partidos.csv"));
+            sc = new Scanner(new File(this.getPartidosCSV()));
             sc.useDelimiter(System.lineSeparator());   //setea el separador de los datos
                 
             System.out.println("Los partidos cargados en el archivo son : ");
@@ -157,7 +203,7 @@ class ListaPartidos {
                 // crea el objeto en memoria
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
-                this.addPartido(partido);
+                //this.addPartido(partido);
             }
 
         // closes the scanner
@@ -216,7 +262,8 @@ class ListaPartidos {
                 this.addPartido(partido);
             }
 
-        // closes the scanner
+            // closes the scanner
+            sc.close();
         } catch (IOException ex) {
                 System.out.println("Mensaje: " + ex.getMessage());
         }           

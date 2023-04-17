@@ -60,21 +60,8 @@ public class Participante {
 
     @Override
     public String toString() {
-        return "Participante  =  " + this.idParticipante + ",  Nombre  =  " + this.nombre + ",  Pronosticos  =  " + 
-                this.pronosticos + ",  Puntaje  =  " + this.getPuntaje();
+        return this.idParticipante + "\t" + this.nombre + "\t";
     }
-    
-    /*
-    private String listaPronosticos() {
-        String res = "";
-            for (Pronostico pronostico : this.getPronosticos()) {
-                res += pronostico.toString()+ System.lineSeparator();
-            }
-            res += "- - - - - - - - - - - - - - - - - -"+ System.lineSeparator();
-
-        return res;
-    }
-    */
     
     // Metodos Especificos
     void cargarPronosticos (ListaEquipos equipos, ListaPartidos partidos) {
@@ -96,4 +83,16 @@ public class Participante {
 
         return puntaje;
     }
+
+    /*
+    private String listaPronosticos() {
+        String res = "";
+            for (Pronostico pronostico : this.getPronosticos()) {
+                res += pronostico.toString()+ System.lineSeparator();
+            }
+            res += "- - - - - - - - - - - - - - - - - -"+ System.lineSeparator();
+
+        return res;
+    }
+    */
 }
