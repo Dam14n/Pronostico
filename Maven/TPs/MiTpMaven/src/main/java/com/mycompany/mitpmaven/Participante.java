@@ -77,11 +77,18 @@ public class Participante {
         // el segundo mensaje corresponde a la lista que tiene el atributo pronosticos
         // de esa lista se obtiene cada pronostico y se saca el puntaje acumulandolo en 
         // la variable puntaje
+        // TODO esto es un asco this.getPronosticos().getPronosticos()
         for (Pronostico pronostico : this.getPronosticos().getPronosticos()) {
 //            puntaje += pronostico.getPuntaje();
         }
 
         return puntaje;
+
+        // TODO refactorizar a algo como
+        /*
+            return this.getPronosticos().getPuntaje()
+         */
+        // TODO en la clase ListaPronosticos crear el metodo getPuntaje que recorra todos los pronosticos y devuelva el puntaje
     }
 
     /*

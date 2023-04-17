@@ -8,6 +8,7 @@ package com.mycompany.mitpmaven;
 
 public class Equipo {
     // Atributos
+    // TODO Esto se tendria que llamar solo id
     private int idEquipo;
     private String nombre;
     private String descripcion;
@@ -18,7 +19,7 @@ public class Equipo {
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
-    
+    // TODO Si el constructor vacio no se usa hay que borrarlo, y si se usa ningun valor es necesario de los que se estan inicializando
     public Equipo() {
         this.idEquipo = 0;
         this.nombre = null;
@@ -41,6 +42,7 @@ public class Equipo {
         this.nombre = nombre;
     }
 
+    // TODO Mal escrito el nombre del archivo
     public String getDescriopcion() {
         return descripcion;
     }
@@ -49,6 +51,7 @@ public class Equipo {
         this.descripcion = descriopcion;
     }
 
+    // TODO Usar System.lineSeparator() en vez de \t
     @Override
     public String toString() {
         return this.idEquipo + "\t" + this.nombre + "\t" +

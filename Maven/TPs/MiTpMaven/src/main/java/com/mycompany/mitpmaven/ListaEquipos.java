@@ -6,26 +6,23 @@ package com.mycompany.mitpmaven;
 * @author GRUPO 7
 */
 
-import static com.mycompany.mitpmaven.BaseDeDatos.abrirConexion;
-import static com.mycompany.mitpmaven.BaseDeDatos.cerrarConexion;
-import static com.mycompany.mitpmaven.BaseDeDatos.crearSentencia;
 import de.vandermeer.asciitable.AsciiTable;
 import java.io.File;
 import java.io.IOException;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-//import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import org.beryx.textio.TextIO;
-//import org.beryx.textio.TextTerminal;
-//import org.beryx.textio.TextIO;
 import org.beryx.textio.TextTerminal;
 import org.beryx.textio.system.SystemTextTerminal;
+
+
+import static com.mycompany.mitpmaven.BaseDeDatos.abrirConexion;
+import static com.mycompany.mitpmaven.BaseDeDatos.cerrarConexion;
+import static com.mycompany.mitpmaven.BaseDeDatos.crearSentencia;
 //import org.beryx.textio.system.SystemTextTerminal;
 
 public class ListaEquipos {
@@ -42,6 +39,8 @@ public class ListaEquipos {
     }
     
     public ListaEquipos() {
+        // TODO No es necesario Equipo en <> ya Java lo reconoce por que esta en la declaracion de la variable
+        // TODO Es mejor reutilizar el constructor ya existente => this(new ArrayList(), "./Archivos/equipos.csv")
         this.equipos = new ArrayList<Equipo>();
         this.equiposCSV = "./Archivos/equipos.csv";
     }
@@ -88,6 +87,7 @@ public class ListaEquipos {
             // estoy buscando
             if (eq.getIdEquipo() == idEquipo) {
                 // Si lo encuentro (son iguales) lo asigno como valor de encontrado
+                // TODO No hace fata  asignarlo a encontrado podes devolverlo directamente => return eq;
                 encontrado = eq;
                 // Y hago un break para salir del ciclo ya que no hace falta seguir buscando
                 break;
@@ -98,7 +98,7 @@ public class ListaEquipos {
         // 2- No lo encontré en el ciclo, entonces conserva el valor null del principio
         return encontrado;
     }
-    
+    // TODO El toString de la variable equipos no va a hacer print de los equipos en consola, solo el hash de la representacion del objecto en un momento dado
     @Override
     public String toString() {
         return "ListaEquipos{" + "equipos=" + equipos + '}';
@@ -121,6 +121,18 @@ public class ListaEquipos {
     }
     
     public void listadoEstandar() {
+        // TODO Si vas a concatenar muchos String es mejor usar StringBuilder
+//        StringBuilder builder = new StringBuilder();
+//        builder.append(System.lineSeparator())
+//            .append("Los equipos cargados son : " + System.lineSeparator())
+//            .append("Los equipos cargados son : " + System.lineSeparator())
+//            .append("--------------------------" + System.lineSeparator());
+//
+//        for (Equipo equipo: equipos) {
+//            builder.append(equipo + System.lineSeparator());
+//        }
+//        System.out.println(builder);
+
         String lista = "";
 
         lista += System.lineSeparator();

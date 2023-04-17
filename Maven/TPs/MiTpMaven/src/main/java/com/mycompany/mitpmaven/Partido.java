@@ -95,6 +95,7 @@ public class Partido {
     }
     
     public char getResultado (Equipo equipo) {
+        // TODO usar constante por ejemplo public static String SIN_RESULTADO = 'X'; => char resultado = SIN_RESULTADO;
         char resultado = 'X'; // POR DEFECTO NO SE SABE QUIEN GANO
         
         if (equipo.getNombre().equals(equipo1.getNombre())) {
