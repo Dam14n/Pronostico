@@ -1,6 +1,6 @@
 /*
 */
-package com.mycompany.mitpmaven;
+package com.mycompany.mitpmaven.console;
 
 /**
 * @author GRUPO 7
@@ -32,26 +32,27 @@ public class Menu {
 
 
         switch (opcionSeleccionada) {
-            case 0 :
+            case 0 -> {
                 System.out.println();
                 System.out.println("Saliendo del programa...");
                 System.out.println();
-                break;
-            case 1 :
+            }
+            case 1 -> {
                 System.out.println();
                 System.out.println("Procesando datos desde archivos...");
                 System.out.println();
-                break;
-            case 2 :
+            }
+            case 2 -> {
                 System.out.println();
                 System.out.println("Procesando datos desde base de datos...");
                 System.out.println();
-                break;
-            default :
+            }
+            default -> {
                 System.out.println();
                 System.out.println("Opción inválida. Intente de nuevo.");
                 System.out.println();
             }
+        }
         
         return opcionSeleccionada;
     }

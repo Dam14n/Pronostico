@@ -3,61 +3,45 @@ Para entrega 2
  */
 package com.mycompany.mitpmaven;
 
+import com.mycompany.mitpmaven.console.Menu;
+import com.mycompany.mitpmaven.data.loader.CargadorEquipos;
+import com.mycompany.mitpmaven.data.printer.ListadorEquipos;
+import com.mycompany.mitpmaven.lists.ListaEquipos;
+import com.mycompany.mitpmaven.lists.ListaParticipantes;
+import com.mycompany.mitpmaven.lists.ListaPartidos;
+import com.mycompany.mitpmaven.lists.ListaPronosticos;
+
 /**
- *
  * @author aguzman
  */
 public class PronosticoDeportivo {
-    private ListaEquipos equipos;
-    private ListaPartidos partidos;
-    private ListaParticipantes participantes;
-    private ListaPronosticos pronosticos;
-    private int opcion;
+	private final ListaEquipos equipos;
+	private final ListaPartidos partidos;
+	private final ListaParticipantes participantes;
+	private final ListaPronosticos pronosticos;
+	private final CargadorEquipos cargadorEquipos = new CargadorEquipos();
+	private final ListadorEquipos listadorEquipos = new ListadorEquipos();
 
-    public PronosticoDeportivo() {
-        equipos = new ListaEquipos();
-        partidos = new ListaPartidos();
-        participantes = new ListaParticipantes();
-        pronosticos = new ListaPronosticos();
-        opcion = 0;
-    }
+	public PronosticoDeportivo() {
+		equipos = new ListaEquipos();
+		partidos = new ListaPartidos();
+		participantes = new ListaParticipantes();
+		pronosticos = new ListaPronosticos();
+	}
 
-    public void play(){
-        // 
-        // Opciones de menu
-        Menu menu = new Menu();
-        //this.setOpcion(menu.runMenu());
-        //menu.runMenu(opcion);
-        opcion = menu.runMenu();
-        
-        if ((opcion == 1) || (opcion == 2)){
-            // cargar y listar los equipos
-            //equipos.cargarDeArchivo();
-            equipos.cargaDeDatos(opcion, equipos);
-            //System.out.println(equipos.listar());
-            equipos.listar(opcion);
-        
-            // cargar y listar los participantes
-            //participantes.cargarDeArchivo();
-            participantes.cargaDeDatos(opcion, participantes);
-            //System.out.println(participantes.listar());
-            participantes.listar(opcion);
+	public void play() {
+		Menu menu = new Menu();
+		int opcion = menu.runMenu();
 
-            // cargar y listar los participantes
-            //partidos.cargarDeArchivo(equipos);
-            partidos.cargaDeDatos(opcion, equipos);
-            //System.out.println(partidos.listar());
-            partidos.listar(opcion);
+		if ((opcion == 1) || (opcion == 2)) {
+			cargadorEquipos.cargaDeDatos(opcion, equipos);
+			listadorEquipos.listar(opcion, equipos.getEquipos());
 
-            // Una vez cargados los participantes, para cada uno de ellos
-            // cargar sus pronósticos
-            //for (Participante participante : participantes.getParticipantes()) {
-            //    participante.cargarPronosticos(equipos, partidos);
-            //}
-        
-            //System.out.println(participantes.listar());
-        
-            // agregar y/o modificar el codigo que quieran
-        }
-    } 
+			participantes.cargaDeDatos(opcion, participantes);
+			participantes.listar(opcion);
+
+			partidos.cargaDeDatos(opcion, equipos);
+			partidos.listar(opcion);
+		}
+	}
 }
