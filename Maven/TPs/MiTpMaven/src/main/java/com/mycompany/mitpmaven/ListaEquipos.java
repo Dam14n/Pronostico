@@ -6,17 +6,34 @@ package com.mycompany.mitpmaven;
 * @author GRUPO 7
 */
 
+import static com.mycompany.mitpmaven.BaseDeDatos.abrirConexion;
+import static com.mycompany.mitpmaven.BaseDeDatos.cerrarConexion;
+import static com.mycompany.mitpmaven.BaseDeDatos.crearSentencia;
+import de.vandermeer.asciitable.AsciiTable;
 import java.io.File;
 import java.io.IOException;
+//import java.sql.Connection;
+//import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import org.beryx.textio.TextIO;
+//import org.beryx.textio.TextTerminal;
+//import org.beryx.textio.TextIO;
+import org.beryx.textio.TextTerminal;
+import org.beryx.textio.system.SystemTextTerminal;
+//import org.beryx.textio.system.SystemTextTerminal;
 
 public class ListaEquipos {
     // Atributos
     private List<Equipo> equipos;
     private String equiposCSV;
+    private Object textIO;
+    private TextTerminal<?> systerm;
     
     // Metodos
     public ListaEquipos(List<Equipo> equipos, String equiposCSV) {
@@ -88,6 +105,18 @@ public class ListaEquipos {
     }
 
     // Metodos Especificos    
+    public void listados(int opcion) {
+        switch (opcion) {
+            case 1 -> System.out.println(listar());  // Listado para carga de archivos
+            case 2 -> listarEnTabla();   // Listado para carga de DB
+            default -> {
+                System.out.println();
+                System.out.println("Opción no implementada.");
+                System.out.println();
+            }
+        }
+    }
+    
     public String listar() {
         String lista = "";
 
@@ -102,13 +131,40 @@ public class ListaEquipos {
         return lista;
     }
     
-    // 
-    public void cargaDeDatos(){
-        // Definir
-    }
+    public void listarEnTabla() {
+        SystemTextTerminal systerm = new SystemTextTerminal();
+        TextIO textIO = new TextIO (systerm);
+        TextTerminal terminal = textIO.getTextTerminal();
+        AsciiTable at = new AsciiTable();
+        at.addRule();
+        at.addRow("    Número    ","    Descripción    ");
+        at.addRule();
 
-    // Raaliza la carga desde el archivo especificado
-    public void cargarDeArchivo() {
+        for (Equipo equipo: equipos) {
+            at.addRow(equipo.getIdEquipo(), equipo.getNombre());
+        }           
+
+        at.addRule();
+        String rend = at.render();
+        terminal.print (rend);
+        System.out.println();
+    }
+    
+    // Seleccion de la carga de datos
+    public void cargaDeDatos(int opcion, ListaEquipos listaequipos) {
+        switch (opcion) {
+            case 1 -> cargarDeArchivo(listaequipos);  // Carga desde la base de datos0
+            case 2 -> cargarDeDb(listaequipos);   // Carga desde la base de datos
+            default -> {
+                System.out.println();
+                System.out.println("Opción no implementada.");
+                System.out.println();
+            }
+        }
+    }
+    
+    // cargar desde el archivo
+    public void cargarDeArchivo(ListaEquipos listaequipos) {
         // para las lineas del archivo csv
         String datosEquipo;
         // para los datos individuales de cada linea
@@ -117,9 +173,14 @@ public class ListaEquipos {
         Equipo equipo;
         int fila = 0;
        
+        System.out.println ();
+        System.out.println("Cargando desde archivo " + " ...");
+        System.out.println ();
+
         try { 
-            //      Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
-            Scanner sc = new Scanner(new File(this.getEquiposCSV()));
+            //Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
+            Scanner sc;
+            sc = new Scanner(new File(this.getEquiposCSV()));
             sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
 
             //System.out.println("Los equipos cargados en el archivo son : ");
@@ -128,7 +189,7 @@ public class ListaEquipos {
             while (sc.hasNext()) {
                 // levanta los datos de cada linea
                 datosEquipo = sc.next();
-                //      System.out.println(datosEquipo);  //muestra los datos levantados 
+                //System.out.println(datosEquipo);  //muestra los datos levantados 
                 fila ++;
                 // si es la cabecera la descarto y no se considera para armar el listado
                 if (fila == 1)
@@ -148,58 +209,56 @@ public class ListaEquipos {
                 
                 // llama al metodo add para grabar el equipo en la lista en memoria
                 this.addEquipo(equipo);
+                //System.out.println(equipo);  //muestra los datos levantados 
             }
+
             //closes the scanner
+            sc.close();
         } catch (IOException ex) {
                 System.out.println("Mensaje: " + ex.getMessage());
         }       
     }
     
-    // Raaliza la carga desde la DB
-    public void cargarDeDb() {
-        // para las lineas del archivo csv
-        String datosEquipo;
-        // para los datos individuales de cada linea
-        String vectorEquipo[];
-        // para el objeto en memoria
-        Equipo equipo;
-        int fila = 0;
-       
-        try { 
-            //      Scanner sc = new Scanner(new File("./Archivos/equipos.csv"));
-            Scanner sc = new Scanner(new File(this.getEquiposCSV()));
-            sc.useDelimiter(System.lineSeparator() );   //setea el separador de los datos
+    // cargar desde la base de datos
+    public void cargarDeDb(ListaEquipos listaequipos) {
+        // Todas las lineas comentadas son del codigo original 
+        //Connection conn = null;
+        
+        try {
+            
+            // Establecer una conexión
+            //conn = DriverManager.getConnection("jdbc:sqlite:./Archivos/pronosticos.db");
+            //conn = abrirConexion();
+            abrirConexion();
+            
+            // Crear la base de datos
+            // Statement stmt = conn.createStatement();
+            Statement stmt = crearSentencia();
 
-            //System.out.println("Los equipos cargados en el archivo son : ");
-            //System.out.println("----------------------------------------");
+            //System.out.println("Consultando datos...");
+            String sql = "SELECT idEquipo, Nombre, Descripcion FROM equipos";
+            ResultSet rs = stmt.executeQuery(sql); // loop through the result set
 
-            while (sc.hasNext()) {
-                // levanta los datos de cada linea
-                datosEquipo = sc.next();
-                //      System.out.println(datosEquipo);  //muestra los datos levantados 
-                fila ++;
-                // si es la cabecera la descarto y no se considera para armar el listado
-                if (fila == 1)
-                    continue;              
-                 
-                //Proceso auxiliar para convertir los string en vector
-                // guarda en un vector los elementos individuales
-                vectorEquipo = datosEquipo.split(",");   
+            //System.out.println("Cargando los datos en ListaEquipos...");
+
+            //ListaEquipos lista = new ListaEquipos();
+            while (rs.next()) {
+                Equipo e = new Equipo(
+                        rs.getInt("idEquipo"),
+                        rs.getString("Nombre"),
+                        rs.getString("Descripcion")
+                );
                 
-                // graba el equipo en memoria
-                // convertir un string a un entero;
-                int readIdEquipo = Integer.parseInt(vectorEquipo[0]);
-                String readNombre = vectorEquipo[1];
-                String readDescripcion = vectorEquipo[2];
-                // crea el objeto en memoria
-                equipo = new Equipo(readIdEquipo, readNombre, readDescripcion);
-                
-                // llama al metodo add para grabar el equipo en la lista en memoria
-                this.addEquipo(equipo);
+                //lista.addEquipo(e);
+                listaequipos.addEquipo(e);
             }
-            //closes the scanner
-        } catch (IOException ex) {
-                System.out.println("Mensaje: " + ex.getMessage());
-        }       
+
+            //System.out.println("Mostrando los OBJETOS de ListaEquipos...");
+            //System.out.println(lista.listar());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
     }
 }

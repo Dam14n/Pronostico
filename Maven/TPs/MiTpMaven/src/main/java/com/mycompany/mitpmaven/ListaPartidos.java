@@ -97,8 +97,77 @@ class ListaPartidos {
         return lista;
     }
     
-    // Raaliza la carga desde el archivo especificado
+    // Seleccion de la carga de datos
+    public void cargaDeDatos(int opcion, ListaEquipos listaequipos) {
+        switch (opcion) {
+            case 1 -> cargarDeArchivo(listaequipos);  // Carga desde la base de datos0
+            case 2 -> cargarDeDb(listaequipos);   // Carga desde la base de datos
+            default -> {
+                System.out.println();
+                System.out.println("Opción no implementada.");
+                System.out.println();
+            }
+        }
+    }
+
+    // cargar desde el archivo
     public void cargarDeArchivo(ListaEquipos listaequipos) {
+        // para las lineas del archivo csv
+        String datosPartido;
+        // para los datos individuales de cada linea
+        String vectorPartido[];
+        // para el objeto en memoria
+        Partido partido;
+        
+        int fila = 0;
+       
+        try { 
+            Scanner sc = new Scanner(new File("./Archivos/partidos.csv"));
+            sc.useDelimiter(System.lineSeparator());   //setea el separador de los datos
+                
+            System.out.println("Los partidos cargados en el archivo son : ");
+            System.out.println("-----------------------------------------");
+
+            while (sc.hasNext()) {
+                // levanta los datos de cada linea
+                datosPartido = sc.next();
+                System.out.println(datosPartido);  //muestra los datos levantados 
+                fila ++;
+                // si es la cabecera la descarto y no se considera para armar el listado
+                if (fila == 1)
+                    continue;              
+                 
+                // Proceso auxiliar para convertir los string en vector
+                // guarda en un vector los elementos individuales
+                vectorPartido = datosPartido.split(",");   
+                
+                // graba el equipo en memoria
+                // convertir un string a un entero;
+                int readIdPartido = Integer.parseInt(vectorPartido[0]);
+                int readIdEquipo1 = Integer.parseInt(vectorPartido[1]);
+                int readIdEquipo2 = Integer.parseInt(vectorPartido[2]);
+                int readGolesEquipo1 = Integer.parseInt(vectorPartido[3]);
+                int readGolesEquipo2 = Integer.parseInt(vectorPartido[4]);
+
+                Equipo equipo1 = listaequipos.getEquipo(readIdEquipo1);
+                Equipo equipo2 = listaequipos.getEquipo(readIdEquipo2);
+                
+                // crea el objeto en memoria
+                partido = new Partido(readIdPartido, equipo1, equipo2, readGolesEquipo1, readGolesEquipo2);
+                // crea el objeto en memoria
+                
+                // llama al metodo add para grabar el equipo en la lista en memoria
+                this.addPartido(partido);
+            }
+
+        // closes the scanner
+        } catch (IOException ex) {
+                System.out.println("Mensaje: " + ex.getMessage());
+        }           
+    }
+
+    // cargar desde la base de datos
+    public void cargarDeDb(ListaEquipos listaequipos) {
         // para las lineas del archivo csv
         String datosPartido;
         // para los datos individuales de cada linea

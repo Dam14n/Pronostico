@@ -12,19 +12,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class BaseDeDatos {
-   private static Connection conexion;
+    private static Connection conexion;
 
+    // Abre la conexion de la base de datos
     public static Connection abrirConexion() {
-        String url = "jdbc:mysql://localhost:3306/pronosticos.db";
+        String api = "jdbc";
+        String driver = "sqlite";
+        String road = "./Archivos/";
+        String port = "3306/";
+        String database = "pronosticos.db";
         String usuario = "root";
         String password = "contraseña";
+        String separator = ":";
+        String url = api + separator + driver + separator + road + database;
+        //String url = "jdbc:mysql://localhost:3306/pronosticos.db";
         
         try {
-            conexion = DriverManager.getConnection(url, usuario, password);
-            System.out.println("Conexión exitosa a la base de datos");
+            conexion = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println("Error al conectar con la base de datos");
-            e.printStackTrace();
         }
         
         return conexion;
@@ -36,11 +42,9 @@ public class BaseDeDatos {
         try {
             if (conexion != null) {
                 statement = conexion.createStatement();
-                System.out.println("Statement creado correctamente");
             }
         } catch (SQLException e) {
             System.out.println("Error al crear el statement");
-            e.printStackTrace();
         }
         
         return statement;
@@ -50,11 +54,10 @@ public class BaseDeDatos {
         try {
             if (conexion != null && !conexion.isClosed()) {
                 conexion.close();
-                System.out.println("Conexión cerrada correctamente");
             }
         } catch (SQLException e) {
-            System.out.println("Error al cerrar la conexión con la base de datos");
-            e.printStackTrace();
+            // close failed.
+           System.out.println("Error al cerrar la conexión con la base de datos");
         }
     }
 

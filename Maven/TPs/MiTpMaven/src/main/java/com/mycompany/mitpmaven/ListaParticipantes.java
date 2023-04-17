@@ -3,8 +3,14 @@ Clase ListaParticipantes para la entrega 2
  */
 package com.mycompany.mitpmaven;
 
+import static com.mycompany.mitpmaven.BaseDeDatos.abrirConexion;
+import static com.mycompany.mitpmaven.BaseDeDatos.cerrarConexion;
+import static com.mycompany.mitpmaven.BaseDeDatos.crearSentencia;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -95,8 +101,21 @@ public class ListaParticipantes {
         return encontrado;
     }
 
+    // Seleccion de la carga de datos
+    public void cargaDeDatos(int opcion, ListaParticipantes listaparticipantes) {
+        switch (opcion) {
+            case 1 -> cargarDeArchivo(listaparticipantes);  // Carga desde la base de datos0
+            case 2 -> cargarDeDb(listaparticipantes);   // Carga desde la base de datos
+            default -> {
+                System.out.println();
+                System.out.println("Opción no implementada.");
+                System.out.println();
+            }
+        }
+    }
+
     // cargar desde el archivo
-    public void cargarDeArchivo() {
+    public void cargarDeArchivo(ListaParticipantes listaparticipantes) {
         // para las lineas del archivo csv
         String datosParticipante;
         // para los datos individuales de cada linea
@@ -142,4 +161,45 @@ public class ListaParticipantes {
                 System.out.println("Mensaje: " + ex.getMessage());
         }       
     }
-}
+
+// cargar desde la base de datos
+    public void cargarDeDb(ListaParticipantes listaparticipantes) {
+        // Todas las lineas comentadas son del codigo original 
+        //Connection conn = null;
+        
+        try {
+            
+            // Establecer una conexión
+            //conn = DriverManager.getConnection("jdbc:sqlite:./Archivos/pronosticos.db");
+            //conn = abrirConexion();
+            abrirConexion();
+            
+            // Crear la base de datos
+            // Statement stmt = conn.createStatement();
+            Statement stmt = crearSentencia();
+
+            //System.out.println("Consultando datos...");
+            String sql = "SELECT idParticipante, Nombre FROM participantes";
+            ResultSet rs = stmt.executeQuery(sql); // loop through the result set
+
+            //System.out.println("Cargando los datos en ListaPArticipantes...");
+
+            //ListaEquipos lista = new ListaEquipos();
+            while (rs.next()) {
+                Participante p = new Participante(
+                        rs.getInt("idParticipante"),
+                        rs.getString("Nombre")
+                );
+                
+                //lista.addEquipo(e);
+                listaparticipantes.addParticipante(p);
+            }
+
+            //System.out.println("Mostrando los OBJETOS de ListaEquipos...");
+            //System.out.println(lista.listar());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            cerrarConexion();
+        }
+    }}
