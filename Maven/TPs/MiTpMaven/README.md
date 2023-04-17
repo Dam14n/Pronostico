@@ -78,8 +78,12 @@
     3. `    public void listadoTabla()`
 
 1. Las clases `ListaEquipos`,`ListaParticipantes`,`ListaPartidos`,`ListaPronosticos` son practicamente todas iguales, se
-   puede eliminar todo el codigo repetido en una clase abstracta. Los cambios mencionados en los 2 puntos anteriores tambien se pueden aplicar a estas clases.
+   puede eliminar todo el codigo repetido en una clase abstracta. Los cambios mencionados en los 2 puntos anteriores
+   tambien se pueden aplicar a estas clases.
 
 1. Hay 2 metodos main, eliminar el que no corresponde:
-   1. Uno en la clase `TP.java`
-   1. Otro en la clase `MiTpMaven.java`
+    1. Uno en la clase `TP.java`
+    1. Otro en la clase `MiTpMaven.java`
+
+1. Los archivos no se ponen en una carpeta `Archivos` dentro de la ubicacion `src/main` se crea una carpeta
+   llamada `resources` y dentro de esa carpeta se meten todos los archivos
