@@ -4,6 +4,7 @@
  */
 package com.mycompany.mitpmaven.model;
 
+import com.mycompany.mitpmaven.repository.Identificable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,13 +17,13 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Partido {
+public class Partido implements Identificable {
 
 	public static final char SIN_RESULTADO = 'X';
 	public static final char GANADOR = 'G';
 	public static final char PERDEDOR = 'P';
 	public static final char EMPATE = 'E';
-	private int id;
+	private long id;
 	private Equipo equipo1;
 	private Equipo equipo2;
 	private Integer golesEquipo1;

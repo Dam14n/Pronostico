@@ -1,13 +1,12 @@
 package com.mycompany.mitpmaven.utils;
 
-import com.mycompany.mitpmaven.lists.ListaEquipos;
 import java.io.File;
 
 public class FileUtils {
 
-	public static File getFile(ListaEquipos listaequipos) {
+	public static File getFile(FileLocator fileLocator) {
 		try {
-			return new File(FileUtils.class.getClassLoader().getResource(listaequipos.getEquiposCSV()).getFile());
+			return new File(FileUtils.class.getClassLoader().getResource(fileLocator.getFileLocation()).getFile());
 		} catch (Exception ex) {
 			System.out.println("Mensaje: " + ex.getMessage());
 		}
